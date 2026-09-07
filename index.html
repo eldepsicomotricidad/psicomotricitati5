@@ -4,97 +4,106 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Seguiment · Psicomotricitat I5</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --paper: #EFE7D8;
-    --ink: #2B2620;
-    --ink-soft: #6B6153;
-    --wood: #8B5E3C;
-    --wood-dark: #6B4527;
-    --mat-hmb: #4C7A5E;   /* verd - habilitats motrius bàsiques */
-    --mat-hmb-bg: #E1EBE3;
-    --mat-cc: #3D6B8C;    /* blau - consciència corporal */
-    --mat-cc-bg: #DEE7EC;
-    --mat-jt: #B4543F;    /* terracota - joc teatralitzat */
-    --mat-jt-bg: #F0DFD8;
-    --line: #D8CDB8;
-    --card: #FAF6EC;
+    --bg: #FFFFFF;
+    --ink: #1E3A5F;        /* blau fosc - títols i text principal */
+    --ink-soft: #6B7280;   /* gris - text secundari */
+    --blue: #1E3A5F;       /* blau - accent principal / consciència corporal */
+    --blue-bg: #E8ECF1;
+    --green: #4A7A3E;      /* verd - accent / habilitats motrius bàsiques */
+    --green-bg: #E7EFE4;
+    --teal: #3E7C8C;       /* blau-verd - joc teatralitzat */
+    --teal-bg: #E4EDEF;
+    --line: #E3E7EB;
+    --card: #F6F8FA;
   }
   *{box-sizing:border-box;}
   body{
     margin:0;
-    font-family: 'Iowan Old Style','Palatino Linotype','Georgia', serif;
-    background:
-      radial-gradient(circle at 10% 0%, #F5EFDE 0%, transparent 45%),
-      var(--paper);
+    font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+    background: var(--bg);
     color:var(--ink);
     padding: 32px 20px 80px;
     min-height:100vh;
   }
   .wrap{ max-width: 760px; margin: 0 auto; }
-
+ 
   header{ margin-bottom: 28px; }
   .eyebrow{
-    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-family: 'Inter', Arial, sans-serif;
     font-size: 12.5px;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
     color: var(--ink-soft);
     margin: 0 0 6px;
+    font-weight: 600;
   }
   h1{
-    font-size: 30px;
-    line-height: 1.15;
-    margin: 0 0 4px;
+    font-family: 'Poppins', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 29px;
+    line-height: 1.2;
+    margin: 0 0 6px;
     font-weight: 600;
     letter-spacing: -0.01em;
+    color: var(--blue);
   }
-  .sub{ font-family:'Helvetica Neue', Arial, sans-serif; font-size:14.5px; color:var(--ink-soft); }
-
+  .sub{ font-family:'Inter', Arial, sans-serif; font-size:14.5px; color:var(--ink-soft); }
+ 
   .now-card{
-    background: var(--wood);
-    color: #FBF6EC;
+    background: var(--blue);
+    color: #FFFFFF;
     border-radius: 18px;
     padding: 26px 26px 22px;
     margin: 26px 0 18px;
     position: relative;
-    box-shadow: 0 10px 24px -12px rgba(60,40,15,0.45);
+    box-shadow: 0 12px 28px -14px rgba(30,58,95,0.5);
   }
   .now-card .tag{
-    font-family:'Helvetica Neue', Arial, sans-serif;
+    font-family:'Inter', Arial, sans-serif;
     font-size: 12px;
-    color: #E8D9C2;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #A9D18C;
     margin-bottom: 10px;
   }
   .now-card h2{
+    font-family: 'Poppins', 'Helvetica Neue', Arial, sans-serif;
     margin: 0 0 6px;
-    font-size: 26px;
-    line-height: 1.2;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1.25;
   }
   .now-card .meta{
-    font-family:'Helvetica Neue', Arial, sans-serif;
+    font-family:'Inter', Arial, sans-serif;
     font-size: 13.5px;
-    color: #EFE3D0;
+    color: #D7E2EC;
     display:flex; gap: 14px; flex-wrap: wrap; margin-top: 10px;
   }
   .now-card .meta span{ display:flex; align-items:center; gap:6px; }
   .pill{
     display:inline-block;
-    font-family:'Helvetica Neue', Arial, sans-serif;
+    font-family:'Inter', Arial, sans-serif;
     font-size: 11.5px;
+    font-weight: 600;
     padding: 3px 10px;
     border-radius: 999px;
-    background: rgba(255,255,255,0.16);
-    color: #FBF6EC;
+    background: rgba(146,209,109,0.22);
+    color: #C7E8B4;
   }
   .empty-msg{
-    font-family:'Helvetica Neue', Arial, sans-serif;
+    font-family:'Inter', Arial, sans-serif;
     font-size: 14px;
-    color:#EFE3D0;
+    color:#D7E2EC;
   }
-
+ 
   .controls{
     display:flex; gap:10px; flex-wrap:wrap; align-items:center;
-    font-family:'Helvetica Neue', Arial, sans-serif;
+    font-family:'Inter', Arial, sans-serif;
     font-size: 13.5px;
     margin: 18px 0 10px;
   }
@@ -108,20 +117,21 @@
     background: var(--card);
     color: var(--ink);
   }
-
+ 
   .skip-box{
     background: var(--card);
     border: 1px solid var(--line);
     border-radius: 14px;
     padding: 16px 18px;
     margin: 18px 0 28px;
-    font-family:'Helvetica Neue', Arial, sans-serif;
+    font-family:'Inter', Arial, sans-serif;
   }
   .skip-box h3{
-    font-family: 'Iowan Old Style','Georgia', serif;
-    font-size: 17px;
+    font-family: 'Poppins', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 16px;
     margin: 0 0 10px;
     font-weight: 600;
+    color: var(--blue);
   }
   .skip-form{ display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin-bottom: 10px; }
   .skip-form select, .skip-form input[type=text]{
@@ -133,21 +143,23 @@
   }
   .skip-form input[type=text]{ flex:1; min-width: 140px; }
   button{
-    font-family: inherit;
+    font-family: 'Inter', inherit;
+    font-weight: 600;
     cursor:pointer;
     border: none;
     border-radius: 8px;
     padding: 8px 14px;
     font-size: 13px;
-    background: var(--wood);
+    background: var(--blue);
     color: #fff;
     transition: background .15s;
   }
-  button:hover{ background: var(--wood-dark); }
+  button:hover{ background: #16294A; }
   button.ghost{
     background: transparent;
     color: var(--ink-soft);
     border: 1px solid var(--line);
+    font-weight: 500;
   }
   button.ghost:hover{ background: #00000008; color: var(--ink); }
   .skip-list{ list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:6px;}
@@ -157,17 +169,19 @@
     background: #fff; border:1px solid var(--line); border-radius: 8px;
     padding: 6px 10px;
   }
-  .skip-list button{ padding: 3px 9px; font-size:11.5px; background:#00000010; color:var(--ink-soft); }
+  .skip-list button{ padding: 3px 9px; font-size:11.5px; background:#00000010; color:var(--ink-soft); font-weight:500; }
   .skip-list button:hover{ background:#00000018; }
-
+ 
   .trimester{ margin-top: 30px; }
   .trimester-title{
-    font-family:'Helvetica Neue', Arial, sans-serif;
+    font-family:'Inter', Arial, sans-serif;
     font-size: 12.5px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
     color: var(--ink-soft);
     margin: 0 0 10px;
     padding-bottom: 6px;
-    border-bottom: 1px solid var(--line);
+    border-bottom: 2px solid var(--line);
   }
   .session-item{ border-bottom: 1px solid var(--line); }
   .session-item:last-child{ border-bottom:none; }
@@ -179,10 +193,10 @@
     padding: 11px 6px;
     cursor: pointer;
   }
-  .session-row:hover{ background: #00000006; }
-  .session-item.done .session-row{ opacity: 0.45; }
+  .session-row:hover{ background: #F6F8FA; }
+  .session-item.done .session-row{ opacity: 0.42; }
   .session-item.current .session-row{
-    background: linear-gradient(90deg, #FBF6EC, transparent);
+    background: var(--green-bg);
     border-radius: 10px;
     margin: 0 -6px;
     padding: 11px 12px;
@@ -193,11 +207,11 @@
     transition: transform .15s;
     width: 14px; text-align:center;
   }
-  .session-item.expanded .chevron{ transform: rotate(90deg); }
+  .session-item.expanded .chevron{ transform: rotate(90deg); color: var(--blue); }
   .session-detail{
     display:none;
     padding: 4px 6px 20px 44px;
-    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-family: 'Inter', Arial, sans-serif;
   }
   .session-item.expanded .session-detail{ display:block; }
   .obj-line{
@@ -208,6 +222,7 @@
   .block{
     background: var(--card);
     border: 1px solid var(--line);
+    border-left: 3px solid var(--line);
     border-radius: 10px;
     padding: 12px 14px;
     margin-bottom: 10px;
@@ -217,47 +232,52 @@
     margin-bottom: 6px;
   }
   .block-head .name{
-    font-family: 'Iowan Old Style','Georgia', serif;
-    font-weight:600; font-size: 14.5px; color: var(--ink);
+    font-family: 'Poppins', 'Helvetica Neue', Arial, sans-serif;
+    font-weight:600; font-size: 14px; color: var(--ink);
   }
-  .block-head .dur{ font-size: 11.5px; color: var(--ink-soft); white-space:nowrap; }
-  .block p{ font-size: 13px; line-height:1.5; color: var(--ink); margin: 0 0 8px; }
+  .block-head .dur{ font-size: 11.5px; color: var(--ink-soft); white-space:nowrap; font-weight:500; }
+  .block p{ font-size: 13px; line-height:1.55; color: #3B4859; margin: 0 0 8px; }
   .block .tags{ display:flex; gap:16px; flex-wrap:wrap; font-size:11.5px; color: var(--ink-soft); }
   .block .tags b{ color: var(--ink); font-weight:600; }
   .num{
-    font-family:'Helvetica Neue', Arial, sans-serif;
+    font-family:'Inter', Arial, sans-serif;
     font-size: 12px;
+    font-weight: 600;
     color: var(--ink-soft);
     text-align:center;
   }
-  .title-cell .title{ font-size: 15.5px; line-height:1.3; }
+  .title-cell .title{ font-family:'Poppins','Helvetica Neue',Arial,sans-serif; font-weight:500; font-size: 15px; line-height:1.3; color: var(--ink); }
   .title-cell .type{
-    font-family:'Helvetica Neue', Arial, sans-serif;
-    font-size: 11.5px;
-    margin-top: 3px;
+    font-family:'Inter', Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    margin-top: 4px;
     display:inline-block;
-    padding: 2px 8px;
+    padding: 2px 9px;
     border-radius: 999px;
   }
-  .type.HMB{ background: var(--mat-hmb-bg); color: var(--mat-hmb); }
-  .type.CC{ background: var(--mat-cc-bg); color: var(--mat-cc); }
-  .type.JT{ background: var(--mat-jt-bg); color: var(--mat-jt); }
+  .type.HMB{ background: var(--green-bg); color: var(--green); }
+  .type.CC{ background: var(--blue-bg); color: var(--blue); }
+  .type.JT{ background: var(--teal-bg); color: var(--teal); }
+  .block[data-type="HMB"]{ border-left-color: var(--green); }
+  .block[data-type="CC"]{ border-left-color: var(--blue); }
+  .block[data-type="JT"]{ border-left-color: var(--teal); }
   .date-cell{
-    font-family:'Helvetica Neue', Arial, sans-serif;
+    font-family:'Inter', Arial, sans-serif;
     font-size: 13px;
     color: var(--ink-soft);
     text-align: right;
     white-space: nowrap;
   }
-
+ 
   footer{
     margin-top: 40px;
-    font-family:'Helvetica Neue', Arial, sans-serif;
+    font-family:'Inter', Arial, sans-serif;
     font-size: 12px;
     color: var(--ink-soft);
     text-align:center;
   }
-  #status{ font-size:12px; color:var(--ink-soft); font-family:'Helvetica Neue', Arial, sans-serif; margin-top:6px;}
+  #status{ font-size:12px; color:var(--ink-soft); font-family:'Inter', Arial, sans-serif; margin-top:6px;}
 </style>
 </head>
 <body>
@@ -267,17 +287,17 @@
     <h1>Seguiment setmanal de Psicomotricitat</h1>
     <p class="sub">27 sessions, una per setmana, amb marge per saltar-ne quan calgui.</p>
   </header>
-
+ 
   <div id="nowCard" class="now-card">
     <p class="tag">CARREGANT…</p>
   </div>
-
+ 
   <div class="controls">
     <label for="startDate">Data de la Sessió 1</label>
     <input type="date" id="startDate">
     <span id="status"></span>
   </div>
-
+ 
   <div class="skip-box">
     <h3>Setmanes saltades</h3>
     <div class="skip-form">
@@ -287,12 +307,12 @@
     </div>
     <ul class="skip-list" id="skipList"></ul>
   </div>
-
+ 
   <div id="sessions"></div>
-
+ 
   <footer>Els canvis es desen automàticament en aquest navegador. Si l'obres des d'un altre dispositiu, caldrà tornar a configurar la data i les setmanes saltades.</footer>
 </div>
-
+ 
 <script>
 const NIVELL_JOC = {
   1: "El protagonista del dia tria un joc d'entre el repertori de jocs reglats de nivell 1, ja coneguts (pica-paret, vampirs, taurons i pingüins, gelats).",
@@ -308,7 +328,7 @@ const JUGUEM_JUNTS_INTRO = "Arribem a l'aula de psicomotricitat, fem rotllana i 
 const JUGUEM_JUNTS_OUTRO = " En acabar el joc, la mestra apaga el llum, senyal que és moment de tornar a la rotllana per donar pas a la segona part.";
 const JOC_LLIURE_DEFAULT = "A la nova rotllana, l'adult explica que ara poden jugar lliurement amb el material. Poden seguir jugant de la manera proposada inicialment, però també usar la imaginació per fer les seves pròpies propostes. La mestra apaga el llum, senyal que és moment de tornar a la rotllana per donar pas a la darrera part de la sessió.";
 const RETROACCIO_INTRO = "Un cop a la nova rotllana, ens tornem a posar les sabates. Preguntem als infants quin ha estat el seu moment preferit i donem espai perquè expliquin les seves sensacions de la sessió. ";
-
+ 
 const SESSIONS = [
 {n:1, title:"Ens coneixem i coneixem l'espai", type:"CC", tri:1, obj:"2.1, 2.2, 3.2, 4.1",
   jd:{desc:"Fem un recorregut guiat pels espais de l'aula de psico i el seu ús (on deixem les sabates, l'aigua, la roba). En parelles, resseguim la silueta d'un company o companya: un grup ho fa a la pista amb guixos i l'altre a la sorra amb pals. Un cop dibuixada, hi afegim totes les parts del cos que hi veiem (ulls, dits, boca, roba…), verbalitzant-les en veu alta.", org:"Pati · Parelles", mat:"Guixos, pals"},
@@ -419,13 +439,13 @@ const SESSIONS = [
   jl:{mat:"Mateix material"},
   retro:{closing:"Cloenda de curs amb música i una rotllana final de comiat.", org:"Gran grup", mat:"Altaveu i música"}},
 ];
-
+ 
 const TYPE_LABEL = {HMB:"Habilitats motrius bàsiques", CC:"Consciència corporal", JT:"Joc teatralitzat"};
 const STORAGE_KEY = "psico-i5-tracker-state";
 const DEFAULT_START = "2026-09-08";
-
+ 
 let state = { startDate: DEFAULT_START, skips: [] };
-
+ 
 function fmtDate(d){
   return d.toLocaleDateString('ca-ES', { weekday:'long', day:'numeric', month:'long' });
 }
@@ -449,7 +469,7 @@ function mondayOf(d){
   nd.setHours(0,0,0,0);
   return nd;
 }
-
+ 
 function sessionDate(n){
   const start = parseISO(state.startDate);
   let d = addDays(start, (n-1)*7);
@@ -457,7 +477,7 @@ function sessionDate(n){
   d = addDays(d, skipWeeks*7);
   return d;
 }
-
+ 
 async function loadState(){
   try{
     const raw = localStorage.getItem(STORAGE_KEY);
@@ -470,7 +490,7 @@ async function loadState(){
   }
   document.getElementById('startDate').value = state.startDate;
 }
-
+ 
 async function saveState(){
   const statusEl = document.getElementById('status');
   try{
@@ -481,12 +501,12 @@ async function saveState(){
     statusEl.textContent = "No s'ha pogut desar en aquest navegador";
   }
 }
-
+ 
 function render(){
   const today = new Date();
   today.setHours(0,0,0,0);
   const todayMonday = mondayOf(today);
-
+ 
   // find this week's session, or the closest upcoming one
   let current = null;
   let upcoming = null;
@@ -500,7 +520,7 @@ function render(){
       upcoming = {session:s, date:d};
     }
   }
-
+ 
   const nowCard = document.getElementById('nowCard');
   if(current){
     nowCard.innerHTML = `
@@ -526,7 +546,7 @@ function render(){
       <p class="tag">CURS ACABAT</p>
       <p class="empty-msg">S'han completat les 27 sessions de la programació.</p>`;
   }
-
+ 
   // sessions list grouped by trimester
   const container = document.getElementById('sessions');
   container.innerHTML = '';
@@ -541,11 +561,11 @@ function render(){
       const isCurrent = current && current.session.n === s.n;
       const item = document.createElement('div');
       item.className = 'session-item' + (isPast && !isCurrent ? ' done' : '') + (isCurrent ? ' current' : '');
-
+ 
       const jocLliureText = s.jl.custom
         ? s.jl.custom
         : JOC_LLIURE_DEFAULT + (s.jl.extra ? ' ' + s.jl.extra : '');
-
+ 
       item.innerHTML = `
         <div class="session-row">
           <div class="num">${s.n}</div>
@@ -558,32 +578,32 @@ function render(){
         </div>
         <div class="session-detail">
           <p class="obj-line">Objectius treballats: ${s.obj}</p>
-
-          <div class="block">
+ 
+          <div class="block" data-type="${s.type}">
             <div class="block-head"><span class="name">1. Juguem junts</span><span class="dur">15 min</span></div>
             <p>${JUGUEM_JUNTS_INTRO}${NIVELL_JOC[s.tri]}${JUGUEM_JUNTS_OUTRO}</p>
             <div class="tags"><span><b>Espai:</b> Aula de psico · Gran grup</span><span><b>Material:</b> Cap material</span></div>
           </div>
-
-          <div class="block">
+ 
+          <div class="block" data-type="${s.type}">
             <div class="block-head"><span class="name">2. Presentació + joc dirigit</span><span class="dur">40 min</span></div>
             <p>${s.jd.desc}</p>
             <div class="tags"><span><b>Espai:</b> ${s.jd.org}</span><span><b>Material:</b> ${s.jd.mat}</span></div>
           </div>
-
-          <div class="block">
+ 
+          <div class="block" data-type="${s.type}">
             <div class="block-head"><span class="name">3. Joc lliure</span><span class="dur">20 min</span></div>
             <p>${jocLliureText}</p>
             <div class="tags"><span><b>Espai:</b> Aula de psico · Gran grup</span><span><b>Material:</b> ${s.jl.mat}</span></div>
           </div>
-
-          <div class="block">
+ 
+          <div class="block" data-type="${s.type}">
             <div class="block-head"><span class="name">4. Retroacció i relaxació</span><span class="dur">15 min</span></div>
             <p>${RETROACCIO_INTRO}${RESPIRACIO[s.tri]} ${s.retro.closing}</p>
             <div class="tags"><span><b>Espai:</b> Aula de psico · ${s.retro.org}</span><span><b>Material:</b> ${s.retro.mat}</span></div>
           </div>
         </div>`;
-
+ 
       item.querySelector('.session-row').addEventListener('click', ()=>{
         item.classList.toggle('expanded');
       });
@@ -591,11 +611,11 @@ function render(){
     });
     container.appendChild(block);
   }
-
+ 
   // skip session selector
   const sel = document.getElementById('skipSession');
   sel.innerHTML = SESSIONS.map(s => `<option value="${s.n}">Abans de la sessió ${s.n} (${s.title})</option>`).join('');
-
+ 
   // skip list
   const skipList = document.getElementById('skipList');
   if(state.skips.length === 0){
@@ -619,13 +639,13 @@ function render(){
     });
   }
 }
-
+ 
 document.getElementById('startDate').addEventListener('change', async (e)=>{
   state.startDate = e.target.value;
   await saveState();
   render();
 });
-
+ 
 document.getElementById('addSkip').addEventListener('click', async ()=>{
   const n = parseInt(document.getElementById('skipSession').value);
   const reason = document.getElementById('skipReason').value.trim();
@@ -634,7 +654,7 @@ document.getElementById('addSkip').addEventListener('click', async ()=>{
   await saveState();
   render();
 });
-
+ 
 (async function init(){
   await loadState();
   render();
