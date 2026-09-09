@@ -283,7 +283,7 @@
 <body>
 <div class="wrap">
   <header>
-    <p class="eyebrow">Educació Infantil · I5 · Curs 2025–2026</p>
+    <p class="eyebrow">Educació Infantil · I5 · Curs 2026–2027</p>
     <h1>Seguiment setmanal de Psicomotricitat</h1>
     <p class="sub">27 sessions, una per setmana, amb marge per saltar-ne quan calgui.</p>
   </header>
@@ -315,126 +315,131 @@
  
 <script>
 const NIVELL_JOC = {
-  1: "El protagonista del dia tria un joc d'entre el repertori de jocs reglats de nivell 1, ja coneguts (pica-paret, vampirs, taurons i pingüins, gelats).",
-  2: "El protagonista del dia tria un joc d'entre el repertori de jocs reglats de nivell 2, amb normes una mica més complexes (el mocador, gel i foc, seguir el líder, variants del pica-paret).",
-  3: "El protagonista del dia tria un joc d'entre el repertori de jocs reglats de nivell 3, amb rols diferenciats i estratègia senzilla (l'aranya peluda, xarranca ràpida, lladres i policies simplificat)."
+  1: "El protagonista del dia tria un joc d'entre el repertori de nivell 1 (pica-paret, vampirs, taurons i pingüins, gelats).",
+  2: "El protagonista del dia tria un joc d'entre el repertori de nivell 2 (el mocador, gel i foc, seguir el líder, variants del pica-paret).",
+  3: "El protagonista del dia tria un joc d'entre el repertori de nivell 3 (l'aranya peluda amb rols, xarranca ràpida, lladres i policies simplificat)."
 };
-const RESPIRACIO = {
-  1: "Fem una respiració guiada breu tipus «bombolla»: inspirem profund pel nas i expirem lentament per la boca, com si buféssim una bombolla gegant (2-3 repeticions).",
-  2: "Fem una respiració guiada associada a un animal relacionat amb la sessió (per exemple, «respiració de la papallona» o «respiració del gat»), inspirant i expirant de manera pausada.",
-  3: "Fem una respiració guiada més llarga, incorporant una petita visualització (imaginar un lloc tranquil) abans de la cloenda de la sessió."
+const BREATH_BANK = {
+  "Globus que s'infla": "Inspirem inflant la panxa com un globus, aguantem un instant i deixem anar l'aire lentament fent «ffff».",
+  "Elefant": "Inspirem aixecant els braços entrellaçats com una trompa i expirem baixant-los lentament.",
+  "Serp que xiula": "Inspirem pel nas i expirem llarg fent «ssss», movent el cos com una serp.",
+  "Abella": "Expirem fent «mmm» amb la boca tancada, notant la vibració.",
+  "Postura de l'arbre": "Dempeus, un peu recolzat a l'altra cama, braços amunt: equilibri i concentració.",
+  "Gat-vaca": "A quatre grapes, arquegem i corbem l'esquena seguint la respiració.",
+  "Papallona": "Asseguts, plantes dels peus juntes, obrim i tanquem les «ales» (cames) amb calma.",
+  "Gos cap avall": "Formem una «muntanya» amb el cos, mans i peus a terra, respirant profund."
 };
-const JUGUEM_JUNTS_INTRO = "Arribem a l'aula de psicomotricitat, fem rotllana i expliquem breument com es desenvoluparà la sessió (recordem les 4 parts: juguem junts, joc dirigit, joc lliure i relaxació). Ens traiem les sabates amb calma: aquest és el moment d'arribar tranquils. ";
-const JUGUEM_JUNTS_OUTRO = " En acabar el joc, la mestra apaga el llum, senyal que és moment de tornar a la rotllana per donar pas a la segona part.";
-const JOC_LLIURE_DEFAULT = "A la nova rotllana, l'adult explica que ara poden jugar lliurement amb el material. Poden seguir jugant de la manera proposada inicialment, però també usar la imaginació per fer les seves pròpies propostes. La mestra apaga el llum, senyal que és moment de tornar a la rotllana per donar pas a la darrera part de la sessió.";
-const RETROACCIO_INTRO = "Un cop a la nova rotllana, ens tornem a posar les sabates. Preguntem als infants quin ha estat el seu moment preferit i donem espai perquè expliquin les seves sensacions de la sessió. ";
+const JUGUEM_JUNTS_INTRO = "Arribem a l'aula de psico, ens descalcem amb calma —el moment d'arribar tranquils— i fem rotllana per recordar els 3 acords d'aula i les 4 parts de la sessió. ";
+const JUGUEM_JUNTS_OUTRO = " En acabar, la mestra apaga el llum, senyal per tornar a la rotllana i donar pas al nucli de la sessió.";
+const JOC_LLIURE_DEFAULT = "A la nova rotllana, l'adult explica que ara poden jugar lliurement amb el material. Poden seguir jugant de la manera proposada inicialment, però també usar la imaginació per fer les seves pròpies propostes. La mestra apaga el llum, senyal per tornar a la rotllana i donar pas a la darrera part.";
+const RETROACCIO_INTRO = "Un cop a la rotllana final, ens tornem a posar les sabates. Preguntem als infants quin ha estat el seu moment preferit i donem espai perquè expliquin les seves sensacions. ";
  
 const SESSIONS = [
-{n:1, title:"Ens coneixem i coneixem l'espai", type:"CC", tri:1, obj:"2.1, 2.2, 3.2, 4.1",
+{n:1, title:"Ens coneixem i coneixem l'espai", type:"CC", tri:1, breath:"Globus que s\'infla", obj:"2.1, 2.2, 3.2, 4.1",
   jd:{desc:"Fem un recorregut guiat pels espais de l'aula de psico i el seu ús (on deixem les sabates, l'aigua, la roba). En parelles, resseguim la silueta d'un company o companya: un grup ho fa a la pista amb guixos i l'altre a la sorra amb pals. Un cop dibuixada, hi afegim totes les parts del cos que hi veiem (ulls, dits, boca, roba…), verbalitzant-les en veu alta.", org:"Pati · Parelles", mat:"Guixos, pals"},
   jl:{mat:"Blocs de construcció, blocs d'escuma", extra:"Es manté el mateix material a disposició, ampliat amb blocs de construcció i d'escuma."},
   retro:{closing:"Per acabar, fem un dibuix a la fulla DIN A3 d'una part del cos que ens agradi especialment.", org:"Individual", mat:"Full DIN A3, llapis"}},
-{n:2, title:"Circuit de la tardor", type:"HMB", tri:1, obj:"1.1, 1.2, 1.3",
+{n:2, title:"Circuit de la tardor", type:"HMB", tri:1, breath:"Elefant", obj:"1.1, 1.2, 1.3",
   jd:{desc:"En grups cooperatius, cada equip crea una part d'un circuit ambientat en la tardor (els tubs són caus, els mocadors són fulles, els cons són castanyes), treballant una HMB diferent a cada tram (saltar, gatejar, esquivar, fer equilibris). Un cop muntat tot el circuit, hi passem individualment i, després, en parelles.", org:"Grups cooperatius · Individual", mat:"Tubs, mocadors, blocs d'escuma, cons"},
   jl:{mat:"Material usat pel circuit", extra:"Es manté muntat el circuit perquè el puguin reinventar lliurement."},
   retro:{closing:"Per acabar, repartim un full DIN A3 perquè puguin dibuixar la sessió d'avui.", org:"Individual", mat:"Full DIN A3, llapis"}},
-{n:3, title:"El conte de la Castanyera", type:"JT", tri:1, obj:"4.2, 2.5, 4.4",
+{n:3, title:"El conte de la Castanyera", type:"JT", tri:1, breath:"Gat-vaca", obj:"4.2, 2.5, 4.4",
   jd:{desc:"A partir del conte de la Castanyera, la mestra el narra i va escollint qui representarà cada personatge. Els infants es guarneixen amb mocadors i piques i posen veu i moviment als personatges de la història, seguint el fil narratiu.", org:"Gran grup", mat:"Blocs d'escuma, mocadors, piques"},
   jl:{mat:"Blocs d'escuma, mocadors, piques"},
   retro:{closing:"Per acabar, posem música i fem un massatge en parelles amb les pilotes.", org:"Parelles", mat:"Altaveu i música, pilotes"}},
-{n:4, title:"Joan Petit: descobrim el cos i la lateralitat", type:"CC", tri:1, obj:"1.5, 2.1, 5.2",
+{n:4, title:"Joan Petit: descobrim el cos i la lateralitat", type:"CC", tri:1, breath:"Postura de l\'arbre", obj:"1.5, 2.1, 5.2",
   jd:{desc:"Ballem «En Joan Petit quan balla» anomenant i movent cada part del cos indicada, incorporant progressivament la consigna «amb la mà dreta / amb la mà esquerra». Després, en parelles, amb fustes, resseguim la silueta del company: qui està estirat s'aixeca i, entre tots dos, la vesteixen, procurant col·locar cada peça al costat correcte (dret/esquerre).", org:"Parelles", mat:"Altaveu i música, fustes i mocadors"},
   jl:{mat:"Fustes, mocadors"},
   retro:{closing:"Per acabar, fem un massatge en parelles (pizza).", org:"Parelles", mat:"—"}},
-{n:5, title:"Equilibris i saltirons", type:"HMB", tri:1, obj:"1.1, 1.3",
+{n:5, title:"Equilibris i saltirons", type:"HMB", tri:1, breath:"Papallona", obj:"1.1, 1.3",
   jd:{desc:"Circuit fix amb quatre estacions d'equilibri i salt: corda al terra (passar-hi per sobre sense caure), banc (desplaçar-s'hi mantenint l'equilibri), saquets (transportar-los d'un lloc a l'altre sense que caiguin) i coixins (saltar d'un a l'altre). Rotació per petits grups cada 8-10 minuts.", org:"Equip cooperatiu", mat:"Cordes, banc, saquets, coixins"},
   jl:{mat:"Cordes, banc, saquets, coixins"},
   retro:{closing:"Per acabar, fem cloenda amb plastilina, representant com ens hem sentit.", org:"Individual", mat:"Plastilina"}},
-{n:6, title:"St. Josep de Calassanç: naixement de l'Escola Pia", type:"JT", tri:1, obj:"4.1, 4.2, 2.5",
+{n:6, title:"St. Josep de Calassanç: naixement de l'Escola Pia", type:"JT", tri:1, breath:"Elefant", obj:"4.1, 4.2, 2.5",
   jd:{desc:"Partint de la història de St. Josep de Calassanç, fem la dramatització. Es van escollint els personatges que la representaran i, entre tots, construïm una escola i representem la creació de l'Escola Pia.", org:"Gran grup", mat:"Blocs de construcció, disfresses i mocadors, piques"},
   jl:{mat:"Mateix material"},
   retro:{closing:"Per acabar, fem cloenda amb música.", org:"Gran grup", mat:"Altaveu i música"}},
-{n:7, title:"Mans que dibuixen: psicomotricitat fina", type:"CC", tri:1, obj:"5.1, 5.2",
+{n:7, title:"Mans que dibuixen: psicomotricitat fina", type:"CC", tri:1, breath:"Gat-vaca", obj:"5.1, 5.2",
   jd:{desc:"Racons rotatius de psicomotricitat fina, en petits grups: 1) pinces d'estendre i boletes de cotó; 2) enfilat de macarrons amb fil; 3) laberints dibuixats a terra a mida gran per recórrer amb el dit i després amb el peu; 4) pintura amb el dit sobre una safata de sorra, fent traços (línies, cercles, ones) mentre verbalitzem «de dalt a baix», «d'esquerra a dreta». Rotació d'uns 8-10 minuts per racó.", org:"Petits grups (racons)", mat:"Pinces d'estendre, cotó, macarrons i fil, safates de sorra"},
   jl:{mat:"Material dels racons"},
   retro:{closing:"Per acabar, repartim un full DIN A3 perquè dibuixin un laberint o camí propi.", org:"Individual", mat:"Full DIN A3, llapis"}},
-{n:8, title:"Taller de llançaments", type:"HMB", tri:1, obj:"1.1, 1.3",
+{n:8, title:"Taller de llançaments", type:"HMB", tri:1, breath:"Abella", obj:"1.1, 1.3",
   jd:{desc:"Fem llançaments basats en el Taller 10 d'Innovamat, prèviament parlat amb els tutors per reforçar els conceptes numèrics que s'estiguin treballant a l'aula aquell moment.", org:"Grups cooperatius", mat:"Cercles i cons"},
   jl:{mat:"Cercles i cons"},
   retro:{closing:"Per acabar, fem cloenda dibuixant allò que marca la làmina del Taller 10.", org:"Individual", mat:"Làmina T.10, llapis"}},
-{n:9, title:"El conte de Nadal, representem-lo", type:"JT", tri:1, obj:"4.2, 4.4, 2.5",
+{n:9, title:"El conte de Nadal, representem-lo", type:"JT", tri:1, breath:"Globus que s\'infla", obj:"4.2, 4.4, 2.5",
   jd:{desc:"Es narra un conte nadalenc senzill (per exemple, el viatge d'un personatge que porta llum a un poble fosc) i s'hi van incorporant gestos i moviments col·lectius que la mestra proposa i els infants repeteixen i amplien.", org:"Gran grup", mat:"Altaveu i música, mocadors, disfresses"},
   jl:{mat:"Mateix material"},
   retro:{closing:"Per acabar, cantem i ballem una cançó nadalenca en rotllana.", org:"Gran grup", mat:"Altaveu i música"}},
-{n:10, title:"Circuit d'hivern", type:"HMB", tri:2, obj:"1.1, 1.2, 1.3",
+{n:10, title:"Circuit d'hivern", type:"HMB", tri:2, breath:"Gos cap avall", obj:"1.1, 1.2, 1.3",
   jd:{desc:"Circuit cooperatiu per grups: cada equip crea i explica una estació ambientada en l'hivern (mantes = neu per arrossegar-s'hi, cercles = glaçons per saltar-hi d'un a l'altre, blocs d'escuma = pedres per esquivar), treballant-hi una HMB diferent. Rotació completa pel circuit.", org:"Grups cooperatius", mat:"Mantes, cercles, blocs d'escuma"},
   jl:{mat:"Mateix material"},
   retro:{closing:"Per acabar, fem cloenda amb plastilina.", org:"Individual", mat:"Plastilina"}},
-{n:11, title:"Miralls: em moc com tu", type:"CC", tri:2, obj:"2.1, 4.2",
+{n:11, title:"Miralls: em moc com tu", type:"CC", tri:2, breath:"Papallona", obj:"2.1, 4.2",
   jd:{desc:"En parelles, juguem a imitar-nos, a fer de miralls: cadascú representa un moviment i la parella l'ha de copiar. Un cop fets uns quants moviments i intercanviat el rol, passem a disfressar-nos amb mocadors perquè la parella també hagi de copiar la disfressa.", org:"Parelles", mat:"Mocadors"},
   jl:{mat:"Mocadors"},
   retro:{closing:"Per acabar, fem cloenda amb música i un massatge grupal.", org:"Gran grup", mat:"Altaveu i música"}},
-{n:12, title:"Titelles de mocador: la nit de Reis", type:"JT", tri:2, obj:"4.2, 4.3",
+{n:12, title:"Titelles de mocador: la nit de Reis", type:"JT", tri:2, breath:"Serp que xiula", obj:"4.2, 4.3",
   jd:{desc:"Es dona un mocador a cada infant perquè creï la seva pròpia titella, fent-hi un nus i movent-la. Fem moviment amb la titella (saludar els amics, posar-la a dormir…) i, després, l'utilitzem per representar breument l'arribada dels Reis. Repetim el procés creant una segona titella amb les sabates i la dessuadora.", org:"Individual", mat:"Mocador, sabates, dessuadora"},
   jl:{mat:"Mateix material"},
   retro:{closing:"Per acabar, fem cloenda amb un massatge en parelles.", org:"Parelles", mat:"Altaveu i música, pilotes"}},
-{n:13, title:"Jocs tradicionals: bitlles i xarranca", type:"HMB", tri:2, obj:"1.1, 1.3, 6.1",
+{n:13, title:"Jocs tradicionals: bitlles i xarranca", type:"HMB", tri:2, breath:"Elefant", obj:"1.1, 1.3, 6.1",
   jd:{desc:"Presentem dos jocs tradicionals amb regles explícites i progressives: les bitlles (llançar per fer-les caure, respectant els torns per equip) i la xarranca (seqüència de salts a peu coix i a dos peus). Practiquem primer tots junts i després deixem que ho facin en petits grups seguint les normes de manera autònoma.", org:"Equip cooperatiu", mat:"Bitlles, guix"},
   jl:{mat:"Bitlles, guix"},
   retro:{closing:"Per acabar, fem cloenda amb un massatge (l'ou).", org:"Gran grup", mat:"—"}},
-{n:14, title:"Respirem com animals", type:"CC", tri:2, obj:"6.2, 2.1",
+{n:14, title:"Respirem com animals", type:"CC", tri:2, breath:"Papallona", obj:"6.2, 2.1",
   jd:{desc:"Sessió centrada en el ioga infantil: postures d'animals (gat, gos, papallona, serp) associades cadascuna a un tipus de respiració concreta (inspiració-expiració llarga i pausada), combinades amb jocs de respiració (bufar plomes imaginàries, inflar un globus imaginari, «respiració de l'abella»).", org:"Gran grup", mat:"Estoretes, música suau"},
   jl:{mat:"Estoretes", extra:"El joc lliure d'aquesta sessió es manté tranquil, amb el mateix material de ioga a disposició."},
   retro:{closing:"En ser una sessió de ioga, la relaxació final s'allarga una mica més de l'habitual, amb una relaxació guiada tombats a terra.", org:"Gran grup", mat:"Música suau"}},
-{n:15, title:"Carnaval: la Vella Quaresma", type:"JT", tri:2, obj:"4.2, 2.5",
+{n:15, title:"Carnaval: la Vella Quaresma", type:"JT", tri:2, breath:"Abella", obj:"4.2, 2.5",
   jd:{desc:"S'explica el conte de carnaval. Seguidament, s'escull el carnestoltes, que va narrant la història i escollint els personatges. A partir d'aquí es crea una festa on també apareix la Vella Quaresma, i cadascú té un rol definit pel carnestoltes.", org:"Gran grup", mat:"Conte de carnaval, disfresses i mocadors"},
   jl:{mat:"Mateix material"},
   retro:{closing:"Per acabar, fem cloenda dibuixant allò que més ens ha agradat de la sessió.", org:"Individual", mat:"Full DIN A3, llapis"}},
-{n:16, title:"Jocs cooperatius: l'illa", type:"HMB", tri:2, obj:"1.3, 2.5, 4.1",
+{n:16, title:"Jocs cooperatius: l'illa", type:"HMB", tri:2, breath:"Gat-vaca", obj:"1.3, 2.5, 4.1",
   jd:{desc:"Presentem dos jocs en equip cooperatiu: «Les quatre cantonades» (canviar de cantonada quan la mestra ho indiqui, sense deixar-se anar de les mans) i «L'illa» (a partir d'una petita història, situar-se dins d'una illa pintada amb guix que es va reduint de mida, procurant que hi càpiguen tots).", org:"Equip cooperatiu · Gran grup", mat:"Guix"},
   jl:{mat:"Guix"},
   retro:{closing:"Per acabar, fem cloenda dibuixant allò que més ens ha agradat de la sessió.", org:"Individual", mat:"Full DIN A3, llapis"}},
-{n:17, title:"El cos que s'equilibra", type:"CC", tri:2, obj:"6.2, 1.1",
+{n:17, title:"El cos que s'equilibra", type:"CC", tri:2, breath:"Postura de l\'arbre", obj:"6.2, 1.1",
   jd:{desc:"Sessió de ioga centrada en l'equilibri: postura de l'arbre, del flamenc i del guerrer, combinades amb petits reptes d'equilibri estàtic (aguantar la postura uns segons) i una respiració conscient entre postura i postura.", org:"Gran grup", mat:"Estoretes, música suau"},
   jl:{mat:"Estoretes"},
   retro:{closing:"Relaxació final llarga, tombats a terra, repassant en veu baixa les postures fetes durant la sessió.", org:"Gran grup", mat:"Música suau"}},
-{n:18, title:"L'espantaocells i el concurs de ioga amb en Roc", type:"JT", tri:2, obj:"4.2, 2.5",
+{n:18, title:"L'espantaocells i el concurs de ioga amb en Roc", type:"JT", tri:2, breath:"Gos cap avall", obj:"4.2, 2.5",
   jd:{desc:"Activitat vinculada a l'itinerari d'aprenentatge de l'espantaocells: comencem amb el conte, que la mestra narra mentre cadascú va representant els moviments de ioga que s'hi esmenten. Després ens disfressem d'espantaocells amb material reciclat i disfresses, i ens presentem al concurs de ioga amb en Roc.", org:"Gran grup", mat:"Materials reciclats i disfresses"},
   jl:{mat:"Mateix material"},
   retro:{closing:"Per acabar, fem cloenda amb plastilina representant allò que més ens ha agradat.", org:"Individual", mat:"Plastilina"}},
-{n:19, title:"La llegenda de Sant Jordi", type:"JT", tri:3, obj:"4.2, 2.5, 4.4",
+{n:19, title:"La llegenda de Sant Jordi", type:"JT", tri:3, breath:"Serp que xiula", obj:"4.2, 2.5, 4.4",
   jd:{desc:"Es representa la llegenda de Sant Jordi. Es divideix el grup en dos subgrups i cadascú escull quin personatge vol representar; la meitat de la classe representa la llegenda i l'altra fa de públic. Entre tots es crea el decorat del castell, la granja i la cova, i la mestra narra la història mentre els infants la van dramatitzant.", org:"Petit grup", mat:"Disfresses, blocs d'escuma, blocs de construcció"},
   jl:{mat:"Mateix material"},
   retro:{closing:"Per acabar, fem cloenda amb plastilina plasmant allò que més ens ha agradat.", org:"Gran grup", mat:"Plastilina"}},
-{n:20, title:"Circuit cooperatiu de primavera", type:"HMB", tri:3, obj:"1.1, 1.2, 1.3",
+{n:20, title:"Circuit cooperatiu de primavera", type:"HMB", tri:3, breath:"Elefant", obj:"1.1, 1.2, 1.3",
   jd:{desc:"En equip cooperatiu, cada grup pensa un tram de circuit tenint present que cadascú hi ha de treballar una habilitat motriu bàsica. Primer s'escull en equip quina HMB es vol treballar, pactant amb la resta de grups perquè no es repeteixin.", org:"Equip cooperatiu", mat:"Depenent de l'equip"},
   jl:{mat:"Mateix material"},
   retro:{closing:"Per acabar, fem un dibuix de la sessió.", org:"Gran grup", mat:"Full DIN A3, llapis"}},
-{n:21, title:"La meva titella de volum: cossos geomètrics", type:"CC", tri:3, obj:"5.3, 4.2",
+{n:21, title:"La meva titella de volum: cossos geomètrics", type:"CC", tri:3, breath:"Papallona", obj:"5.3, 4.2",
   jd:{desc:"Entre tots cantem «En Joan Petit quan balla» per fer memòria de les parts del cos. Recordem els moments en què hem creat titelles i preguntem què es pot aconseguir fer amb el paper d'embalar. Els diem que les titelles tenen volum i preguntem quins cossos coneixen (esfera, prisma, cilindre…). Es dona el material a cada equip perquè creï la seva titella i, finalment, la presenten a la rotllana explicant com s'han posat d'acord, quins cossos han usat i quin nom li han decidit posar.", org:"Equip cooperatiu", mat:"Paper d'embalar, cinta adhesiva"},
   jl:{mat:"Mateix material"},
   retro:{closing:"Compartim verbalment com ha anat el procés de creació en equip.", org:"Gran grup", mat:"—"}},
-{n:22, title:"Jocs tradicionals: bales, xapes i corda", type:"HMB", tri:3, obj:"1.1, 6.1",
+{n:22, title:"Jocs tradicionals: bales, xapes i corda", type:"HMB", tri:3, breath:"Abella", obj:"1.1, 6.1",
   jd:{desc:"Presentem tres jocs tradicionals de precisió i motricitat fina-gruixuda combinada: les bales (llançar i encertar), les xapes (fer-les lliscar amb el dit seguint un recorregut) i la corda (saltar-hi seguint un ritme). Expliquem les normes de cada joc i les practiquem progressivament.", org:"Equip cooperatiu", mat:"Bales, xapes, corda"},
   jl:{mat:"Mateix material"},
   retro:{closing:"Per acabar, fem cloenda amb un massatge (l'ou).", org:"Gran grup", mat:"—"}},
-{n:23, title:"Lateralitat i orientació: dreta-esquerra", type:"CC", tri:3, obj:"5.2, 1.5",
+{n:23, title:"Lateralitat i orientació: dreta-esquerra", type:"CC", tri:3, breath:"Postura de l\'arbre", obj:"5.2, 1.5",
   jd:{desc:"Juguem a «Simon diu» amb consignes de lateralitat (aixeca la mà dreta, toca't el peu esquerre amb la mà dreta…). Després, muntem un petit circuit d'orientació al terra amb fletxes de colors (un color per a la dreta, un altre per a l'esquerra) que cal seguir a partir d'instruccions verbals de la mestra.", org:"Gran grup · Individual", mat:"Fletxes de colors, guix"},
   jl:{mat:"Fletxes de colors, guix"},
   retro:{closing:"Per acabar, fem un dibuix indicant amb fletxes el camí que més ens ha agradat del circuit.", org:"Individual", mat:"Full DIN A3, llapis"}},
-{n:24, title:"Joc dramàtic lliure: el nostre conte", type:"JT", tri:3, obj:"4.2, 4.3, 2.5",
+{n:24, title:"Joc dramàtic lliure: el nostre conte", type:"JT", tri:3, breath:"Gat-vaca", obj:"4.2, 4.3, 2.5",
   jd:{desc:"En petits grups, els infants inventen col·lectivament un conte breu (amb una estructura de suport: personatge, problema, solució) i el representen amb disfresses i material del racó, mentre la resta fa de públic per torns.", org:"Petits grups", mat:"Disfresses, mocadors"},
   jl:{mat:"Mateix material"},
   retro:{closing:"Per acabar, fem cloenda amb música.", org:"Gran grup", mat:"Altaveu i música"}},
-{n:25, title:"Jocs reglats de pati: l'aranya peluda i variants", type:"HMB", tri:3, obj:"6.1, 6.3",
+{n:25, title:"Jocs reglats de pati: l'aranya peluda i variants", type:"HMB", tri:3, breath:"Globus que s\'infla", obj:"6.1, 6.3",
   jd:{desc:"Es presenten i practiquen jocs reglats pensats per jugar-hi de manera autònoma al pati (l'aranya peluda, variants del pica-paret, l'1-2-3 pica paret), amb èmfasi a explicar bé les normes i el rol de cadascú perquè puguin reproduir-los sense l'ajuda de l'adult.", org:"Aula de psico / Pati · Gran grup", mat:"Cap material específic (espai delimitat)"},
   jl:{mat:"—", custom:"El joc lliure d'aquesta sessió consisteix a seguir jugant als mateixos jocs reglats, ja de manera autònoma."},
   retro:{closing:"Compartim quins d'aquests jocs voldrien continuar jugant al pati.", org:"Gran grup", mat:"—"}},
-{n:26, title:"Respiració i relaxació final", type:"CC", tri:3, obj:"6.2",
+{n:26, title:"Respiració i relaxació final", type:"CC", tri:3, breath:"Gos cap avall", obj:"6.2",
   jd:{desc:"Sessió de cloenda de ioga i relaxació: repassem les postures i respiracions treballades durant el curs i, en parelles, creem una petita seqüència pròpia combinant-ne dues o tres.", org:"Parelles", mat:"Estoretes, música suau"},
   jl:{mat:"Estoretes"},
   retro:{closing:"Relaxació final llarga amb música i massatge per parelles.", org:"Parelles", mat:"Altaveu i música"}},
-{n:27, title:"Festa de cloenda: el musical de curs", type:"JT", tri:3, obj:"4.1, 4.2, 2.5, 4.4",
+{n:27, title:"Festa de cloenda: el musical de curs", type:"JT", tri:3, breath:"Globus que s\'infla", obj:"4.1, 4.2, 2.5, 4.4",
   jd:{desc:"Sessió de tancament de curs: recuperem un fragment de cadascuna de les dramatitzacions treballades durant l'any (la Castanyera, Sant Jordi, Carnaval…) i muntem un petit «musical» col·lectiu, que es pot compartir amb una altra classe o amb les famílies si s'escau.", org:"Gran grup", mat:"Disfresses i materials de l'any, altaveu i música"},
   jl:{mat:"Mateix material"},
   retro:{closing:"Cloenda de curs amb música i una rotllana final de comiat.", org:"Gran grup", mat:"Altaveu i música"}},
@@ -582,7 +587,7 @@ function render(){
           <div class="block" data-type="${s.type}">
             <div class="block-head"><span class="name">1. Juguem junts</span><span class="dur">15 min</span></div>
             <p>${JUGUEM_JUNTS_INTRO}${NIVELL_JOC[s.tri]}${JUGUEM_JUNTS_OUTRO}</p>
-            <div class="tags"><span><b>Espai:</b> Aula de psico · Gran grup</span><span><b>Material:</b> Cap material</span></div>
+            <div class="tags"><span><b>Espai:</b> Aula de psico · Gran grup</span><span><b>Material:</b> Cap material específic</span></div>
           </div>
  
           <div class="block" data-type="${s.type}">
@@ -599,7 +604,7 @@ function render(){
  
           <div class="block" data-type="${s.type}">
             <div class="block-head"><span class="name">4. Retroacció i relaxació</span><span class="dur">15 min</span></div>
-            <p>${RETROACCIO_INTRO}${RESPIRACIO[s.tri]} ${s.retro.closing}</p>
+            <p>${RETROACCIO_INTRO}Fem l'exercici de respiració «${s.breath}»: ${BREATH_BANK[s.breath]} ${s.retro.closing}</p>
             <div class="tags"><span><b>Espai:</b> Aula de psico · ${s.retro.org}</span><span><b>Material:</b> ${s.retro.mat}</span></div>
           </div>
         </div>`;
@@ -662,3 +667,4 @@ document.getElementById('addSkip').addEventListener('click', async ()=>{
 </script>
 </body>
 </html>
+ 
