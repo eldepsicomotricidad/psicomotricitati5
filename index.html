@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seguiment · Psicomotricitat I5</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #FFFFFF;
+    --ink: #1E3A5F;        /* blau fosc - títols i text principal */
+    --ink-soft: #6B7280;   /* gris - text secundari */
+    --blue: #1E3A5F;       /* blau - accent principal / consciència corporal */
+    --blue-bg: #E8ECF1;
+    --green: #4A7A3E;      /* verd - accent / habilitats motrius bàsiques */
+    --green-bg: #E7EFE4;
+    --teal: #3E7C8C;       /* blau-verd - joc teatralitzat */
+    --teal-bg: #E4EDEF;
+    --line: #E3E7EB;
+    --card: #F6F8FA;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+    background: var(--bg);
+    color:var(--ink);
+    padding: 32px 20px 80px;
+    min-height:100vh;
+  }
+  .wrap{ max-width: 760px; margin: 0 auto; }
+
+  header{ margin-bottom: 28px; }
+  .eyebrow{
+    font-family: 'Inter', Arial, sans-serif;
+    font-size: 12.5px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin: 0 0 6px;
+    font-weight: 600;
+  }
+  h1{
+    font-family: 'Poppins', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 29px;
+    line-height: 1.2;
+    margin: 0 0 6px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--blue);
+  }
+  .sub{ font-family:'Inter', Arial, sans-serif; font-size:14.5px; color:var(--ink-soft); }
+
+  .now-card{
+    background: var(--blue);
+    color: #FFFFFF;
+    border-radius: 18px;
+    padding: 26px 26px 22px;
+    margin: 26px 0 18px;
+    position: relative;
+    box-shadow: 0 12px 28px -14px rgba(30,58,95,0.5);
+  }
+  .now-card .tag{
+    font-family:'Inter', Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #A9D18C;
+    margin-bottom: 10px;
+  }
+  .now-card h2{
+    font-family: 'Poppins', 'Helvetica Neue', Arial, sans-serif;
+    margin: 0 0 6px;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1.25;
+  }
+  .now-card .meta{
+    font-family:'Inter', Arial, sans-serif;
+    font-size: 13.5px;
+    color: #D7E2EC;
+    display:flex; gap: 14px; flex-wrap: wrap; margin-top: 10px;
+  }
+  .now-card .meta span{ display:flex; align-items:center; gap:6px; }
+  .pill{
+    display:inline-block;
+    font-family:'Inter', Arial, sans-serif;
+    font-size: 11.5px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 999px;
+    background: rgba(146,209,109,0.22);
+    color: #C7E8B4;
+  }
+  .empty-msg{
+    font-family:'Inter', Arial, sans-serif;
+    font-size: 14px;
+    color:#D7E2EC;
+  }
+
+  .controls{
+    display:flex; gap:10px; flex-wrap:wrap; align-items:center;
+    font-family:'Inter', Arial, sans-serif;
+    font-size: 13.5px;
+    margin: 18px 0 10px;
+  }
+  .controls label{ color: var(--ink-soft); }
+  input[type="date"]{
+    font-family: inherit;
+    font-size: 13.5px;
+    padding: 6px 8px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: var(--card);
+    color: var(--ink);
+  }
+
+  .skip-box{
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 16px 18px;
+    margin: 18px 0 28px;
+    font-family:'Inter', Arial, sans-serif;
+  }
+  .skip-box h3{
+    font-family: 'Poppins', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 16px;
+    margin: 0 0 10px;
+    font-weight: 600;
+    color: var(--blue);
+  }
+  .skip-form{ display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin-bottom: 10px; }
+  .skip-form select, .skip-form input[type=text]{
+    font-family: inherit; font-size: 13px;
+    padding: 7px 9px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: #fff;
+  }
+  .skip-form input[type=text]{ flex:1; min-width: 140px; }
+  button{
+    font-family: 'Inter', inherit;
+    font-weight: 600;
+    cursor:pointer;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-size: 13px;
+    background: var(--blue);
+    color: #fff;
+    transition: background .15s;
+  }
+  button:hover{ background: #16294A; }
+  button.ghost{
+    background: transparent;
+    color: var(--ink-soft);
+    border: 1px solid var(--line);
+    font-weight: 500;
+  }
+  button.ghost:hover{ background: #00000008; color: var(--ink); }
+  .skip-list{ list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:6px;}
+  .skip-list li{
+    display:flex; justify-content:space-between; align-items:center;
+    font-size: 13px; color: var(--ink-soft);
+    background: #fff; border:1px solid var(--line); border-radius: 8px;
+    padding: 6px 10px;
+  }
+  .skip-list button{ padding: 3px 9px; font-size:11.5px; background:#00000010; color:var(--ink-soft); font-weight:500; }
+  .skip-list button:hover{ background:#00000018; }
+
+  .trimester{ margin-top: 30px; }
+  .trimester-title{
+    font-family:'Inter', Arial, sans-serif;
+    font-size: 12.5px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--ink-soft);
+    margin: 0 0 10px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid var(--line);
+  }
+  .session-item{ border-bottom: 1px solid var(--line); }
+  .session-item:last-child{ border-bottom:none; }
+  .session-row{
+    display:grid;
+    grid-template-columns: 34px 1fr auto auto;
+    gap: 14px;
+    align-items:center;
+    padding: 11px 6px;
+    cursor: pointer;
+  }
+  .session-row:hover{ background: #F6F8FA; }
+  .session-item.done .session-row{ opacity: 0.42; }
+  .session-item.current .session-row{
+    background: var(--green-bg);
+    border-radius: 10px;
+    margin: 0 -6px;
+    padding: 11px 12px;
+  }
+  .chevron{
+    color: var(--ink-soft);
+    font-size: 12px;
+    transition: transform .15s;
+    width: 14px; text-align:center;
+  }
+  .session-item.expanded .chevron{ transform: rotate(90deg); color: var(--blue); }
+  .session-detail{
+    display:none;
+    padding: 4px 6px 20px 44px;
+    font-family: 'Inter', Arial, sans-serif;
+  }
+  .session-item.expanded .session-detail{ display:block; }
+  .obj-line{
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    margin: 0 0 14px;
+  }
+  .block{
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--line);
+    border-radius: 10px;
+    padding: 12px 14px;
+    margin-bottom: 10px;
+  }
+  .block-head{
+    display:flex; justify-content:space-between; align-items:baseline;
+    margin-bottom: 6px;
+  }
+  .block-head .name{
+    font-family: 'Poppins', 'Helvetica Neue', Arial, sans-serif;
+    font-weight:600; font-size: 14px; color: var(--ink);
+  }
+  .block-head .dur{ font-size: 11.5px; color: var(--ink-soft); white-space:nowrap; font-weight:500; }
+  .block p{ font-size: 13px; line-height:1.55; color: #3B4859; margin: 0 0 8px; }
+  .block .tags{ display:flex; gap:16px; flex-wrap:wrap; font-size:11.5px; color: var(--ink-soft); }
+  .block .tags b{ color: var(--ink); font-weight:600; }
+  .num{
+    font-family:'Inter', Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--ink-soft);
+    text-align:center;
+  }
+  .title-cell .title{ font-family:'Poppins','Helvetica Neue',Arial,sans-serif; font-weight:500; font-size: 15px; line-height:1.3; color: var(--ink); }
+  .title-cell .type{
+    font-family:'Inter', Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    margin-top: 4px;
+    display:inline-block;
+    padding: 2px 9px;
+    border-radius: 999px;
+  }
+  .type.HMB{ background: var(--green-bg); color: var(--green); }
+  .type.CC{ background: var(--blue-bg); color: var(--blue); }
+  .type.JT{ background: var(--teal-bg); color: var(--teal); }
+  .type.FREE{ background: #EEF0F2; color: var(--ink-soft); }
+  .block[data-type="HMB"]{ border-left-color: var(--green); }
+  .block[data-type="CC"]{ border-left-color: var(--blue); }
+  .block[data-type="JT"]{ border-left-color: var(--teal); }
+  .date-cell{
+    font-family:'Inter', Arial, sans-serif;
+    font-size: 13px;
+    color: var(--ink-soft);
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  footer{
+    margin-top: 40px;
+    font-family:'Inter', Arial, sans-serif;
+    font-size: 12px;
+    color: var(--ink-soft);
+    text-align:center;
+  }
+  #status{ font-size:12px; color:var(--ink-soft); font-family:'Inter', Arial, sans-serif; margin-top:6px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <p class="eyebrow">Educació Infantil · I5 · Curs 2026–2027</p>
+    <h1>Seguiment setmanal de Psicomotricitat</h1>
+    <p class="sub">34 sessions de contingut + 3 sessions lliures, amb el calendari real del curs.</p>
+  </header>
+
+  <div id="nowCard" class="now-card">
+    <p class="tag">CARREGANT…</p>
+  </div>
+
+  <div class="skip-box">
+    <h3>Incidències (festes, sortides, tancaments imprevistos)</h3>
+    <p style="font-family:'Inter',Arial,sans-serif; font-size:12.5px; color:var(--ink-soft); margin:-4px 0 12px;">El calendari ja incorpora Nadal, Setmana Santa i les 3 sessions lliures de marge. Fes servir això només per a imprevistos addicionals: a partir del punt triat, tot el que queda es desplaça una setmana.</p>
+    <div class="skip-form">
+      <select id="skipSession"></select>
+      <input type="text" id="skipReason" placeholder="Motiu — opcional">
+      <button id="addSkip">Desplaçar una setmana des d'aquí</button>
+    </div>
+    <ul class="skip-list" id="skipList"></ul>
+    <span id="status"></span>
+  </div>
+
+  <div id="sessions"></div>
+
+  <footer>Els canvis es desen automàticament en aquest navegador. Si l'obres des d'un altre dispositiu, caldrà tornar a configurar les incidències.</footer>
+</div>
+
+<script>
+const SESSIONS = [
+{n:1, title:"Ens coneixem i coneixem l'espai", type:"CC", tri:1, date:"2026-09-08", breath:"Globus que s'infla", obj:"2.1, 2.2, 3.2, 4.1", game:"tria cap joc reglat encara (és la primera sessió del curs).", realitzada:true,
+  jd:{desc:"Fem un recorregut guiat pels espais de l'aula de psico i el seu ús (on deixem les sabates, l'aigua, la roba). En parelles, resseguim la silueta d'un company o companya: un grup ho fa a la pista amb guixos i l'altre a la sorra amb pals. Un cop dibuixada, hi afegim totes les parts del cos que hi veiem (ulls, dits, boca, roba…), verbalitzant-les en veu alta.", org:"Pati · Parelles", mat:"Guixos, pals"},
+  jl:{mat:"Blocs de construcció, blocs d'escuma", extra:"A la nova rotllana, l'adult explica que ara poden jugar lliurement amb el material. Es manté el mateix material a disposició, ampliat amb blocs de construcció i d'escuma. La mestra apaga el llum, senyal per tornar a la rotllana i donar pas a la darrera part."},
+  retro:{closing:"Per acabar, fem un dibuix a la fulla DIN A3 d'una part del cos que ens agradi especialment.", org:"Aula de psico · Individual", mat:"Full DIN A3, llapis"}},
+{n:2, title:"Circuit de la tardor", type:"HMB", tri:1, date:"2026-09-15", breath:"Elefant", obj:"1.1, 1.2, 1.3", game:"tria el joc reglat vigent: «El mocador».", realitzada:false,
+  jd:{desc:"En grups cooperatius, cada equip crea una part d'un circuit ambientat en la tardor (els tubs són caus, els mocadors són fulles, els cons són castanyes), treballant una HMB diferent a cada tram (saltar, gatejar, esquivar, fer equilibris). Un cop muntat tot el circuit, hi passem individualment i, després, en parelles.", org:"Grups cooperatius / Individual", mat:"Tubs, mocadors, blocs d'escuma, cons"},
+  jl:{mat:"Material usat pel circuit", extra:"A la nova rotllana, l'adult explica que ara poden jugar lliurement amb el material. Es manté muntat el circuit perquè el puguin reinventar lliurement. La mestra apaga el llum, senyal per tornar a la rotllana i donar pas a la darrera part."},
+  retro:{closing:"Per acabar, repartim un full DIN A3 perquè puguin dibuixar la sessió d'avui.", org:"Aula de psico · Individual", mat:"Full DIN A3, llapis"}},
+{n:3, title:"Santa Tècla: la festa major de Sitges", type:"JT", tri:1, date:"2026-09-22", breath:"Serp que xiula", obj:"4.2, 2.5, 4.1", game:"tria el joc reglat vigent: «El mocador».", realitzada:false,
+  jd:{desc:"Expliquem breument què és la Festa Major de Sitges (focs, música, gegants pel carrer) i ho representem amb el cos: caminem en cercavila fent sonar instruments de percussió senzills, imitem els gegants caminant lents i grans, i fem 'espurnes de foc' saltant i giravoltant quan sona un ritme ràpid.", org:"Aula de psico · Gran grup", mat:"Panderetes, clavetes, mocadors de colors"},
+  jl:{mat:"Panderetes, clavetes, mocadors", extra:"A la nova rotllana, l'adult explica que ara poden jugar lliurement amb el material. La mestra apaga el llum, senyal per tornar a la rotllana i donar pas a la darrera part."},
+  retro:{closing:"Per acabar, fem una petita cercavila final acompanyada de música.", org:"Aula de psico · Gran grup", mat:"Altaveu i música"}},
+{n:4, title:"Joan Petit: descobrim el cos i la lateralitat", type:"CC", tri:1, date:"2026-09-29", breath:"Abella", obj:"1.5, 2.1, 5.2", game:"tria el joc reglat vigent: «Conillets al seu cau».", realitzada:false,
+  jd:{desc:"Ballem «En Joan Petit quan balla» anomenant i movent cada part del cos indicada, incorporant progressivament la consigna «amb la mà dreta / amb la mà esquerra». Després, en parelles, amb fustes, resseguim la silueta del company: qui està estirat s'aixeca i, entre tots dos, la vesteixen, procurant col·locar cada peça al costat correcte (dret/esquerre).", org:"Aula de psico · Parelles", mat:"Altaveu i música, fustes i mocadors"},
+  jl:{mat:"Fustes, mocadors", extra:"A la nova rotllana, l'adult explica que ara poden jugar lliurement amb el material. La mestra apaga el llum, senyal per tornar a la rotllana i donar pas a la darrera part."},
+  retro:{closing:"Per acabar, fem un massatge en parelles (pizza).", org:"Aula de psico · Parelles", mat:"—"}},
+{n:5, title:"Equilibris i saltirons", type:"HMB", tri:1, date:"2026-10-06", breath:"Postura de l'arbre", obj:"1.1, 1.3", game:"tria el joc reglat vigent: «Conillets al seu cau».", realitzada:false,
+  jd:{desc:"Circuit fix amb quatre estacions d'equilibri i salt: corda al terra (passar-hi per sobre sense caure), banc (desplaçar-s'hi mantenint l'equilibri), saquets (transportar-los d'un lloc a l'altre sense que caiguin) i coixins (saltar d'un a l'altre). Rotació per petits grups cada 8-10 minuts.", org:"Aula de psico · Equip cooperatiu", mat:"Cordes, banc, saquets, coixins"},
+  jl:{mat:"Cordes, banc, saquets, coixins", extra:"A la nova rotllana, l'adult explica que ara poden jugar lliurement amb el material. La mestra apaga el llum, senyal per tornar a la rotllana i donar pas a la darrera part."},
+  retro:{closing:"Per acabar, fem cloenda amb plastilina, representant com ens hem sentit.", org:"Aula de psico · Individual", mat:"Plastilina"}},
+{n:6, title:"Mans que dibuixen: psicomotricitat fina", type:"CC", tri:1, date:"2026-10-13", breath:"Gat-vaca", obj:"5.1, 5.2", game:"tria el joc reglat vigent: «El rescat de les estàtues».", realitzada:false,
+  jd:{desc:"Racons rotatius de psicomotricitat fina, en petits grups: 1) pinces d'estendre i boletes de cotó; 2) enfilat de macarrons amb fil; 3) laberints dibuixats a terra a mida gran per recórrer amb el dit i després amb el peu; 4) pintura amb el dit sobre una safata de sorra, fent traços (línies, cercles, ones) mentre verbalitzem «de dalt a baix», «d'esquerra a dreta». Rotació d'uns 8-10 minuts per racó.", org:"Aula de psico · Petits grups (racons)", mat:"Pinces d'estendre, cotó, macarrons i fil, safates de sorra"},
+  jl:{mat:"Material dels racons", extra:"A la nova rotllana, l'adult explica que ara poden jugar lliurement amb el material. La mestra apaga el llum, senyal per tornar a la rotllana i donar pas a la darrera part."},
+  retro:{closing:"Per acabar, repartim un full DIN A3 perquè dibuixin un laberint o camí propi.", org:"Aula de psico · Individual", mat:"Full DIN A3, llapis"}},
+{n:7, title:"Taller de llançaments", type:"HMB", tri:1, date:"2026-10-20", breath:"Papallona", obj:"1.1, 1.3", game:"tria el joc reglat vigent: «El rescat de les estàtues».", realitzada:false,
+  jd:{desc:"Fem llançaments basats en el Taller 10 d'Innovamat, prèviament parlat amb els tutors per reforçar els conceptes numèrics que s'estiguin treballant a l'aula aquell moment.", org:"Aula de psico · Grups cooperatius", mat:"Cercles i cons"},
+  jl:{mat:"Cercles i cons", extra:"A la nova rotllana, l'adult explica que ara poden jugar lliurement amb el material. La mestra apaga el llum, senyal per tornar a la rotllana i donar pas a la darrera part."},
+  retro:{closing:"Per acabar, fem cloenda dibuixant allò que marca la làmina del Taller 10.", org:"Aula de psico · Individual", mat:"Làmina T.10, llapis"}},
+{n:8, title:"El conte de la Castanyera", type:"JT", tri:1, date:"2026-10-27", breath:"Gos cap avall", obj:"4.2, 2.5, 4.4", game:"tria el joc reglat vigent: «El mocador».", realitzada:false,
+  jd:{desc:"A partir del conte de la Castanyera, la mestra el narra i va escollint qui representarà cada personatge. Els infants es guarneixen amb mocadors i piques i posen veu i moviment als personatges de la història, seguint el fil narratiu.", org:"Aula de psico · Gran grup", mat:"Blocs d'escuma, mocadors, piques"},
+  jl:{mat:"Blocs d'escuma, mocadors, piques", extra:"A la nova rotllana, l'adult explica que ara poden jugar lliurement amb el material. La mestra apaga el llum, senyal per tornar a la rotllana i donar pas a la darrera part."},
+  retro:{closing:"Per acabar, posem música i fem un massatge en parelles amb les pilotes.", org:"Aula de psico · Parelles", mat:"Altaveu i música, pilotes"}},
+{n:9, title:"Circuit d'obstacles: saltem, gategem, esquivem", type:"HMB", tri:1, date:"2026-11-10", breath:"Globus que s'infla", obj:"1.1, 1.2, 1.3", game:"tria el joc reglat vigent: «Conillets al seu cau».", realitzada:false,
+  jd:{desc:"Muntem un circuit amb quatre trams diferenciats: saltar per sobre de cercles, gatejar per sota d'una xarxa de cordes, esquivar cons en ziga-zaga i desplaçar-se per sobre d'un banc. Hi passem primer individualment i, després, per parelles, ajudant-se en els trams més difícils.", org:"Aula de psico · Equip cooperatiu", mat:"Cercles, cordes, cons, banc"},
+  jl:{mat:"Mateix material del circuit", extra:"A la nova rotllana, l'adult explica que ara poden jugar lliurement amb el material. La mestra apaga el llum, senyal per tornar a la rotllana i donar pas a la darrera part."},
+  retro:{closing:"Per acabar, fem cloenda amb un massatge (l'ou).", org:"Aula de psico · Gran grup", mat:"—"}},
+{n:10, title:"El cos que s'expressa: mim i gestos", type:"CC", tri:1, date:"2026-11-17", breath:"Elefant", obj:"4.2, 2.1", game:"tria el joc reglat vigent: «El rescat de les estàtues».", realitzada:false,
+  jd:{desc:"Juguem a expressar emocions i accions només amb el cos i la cara, sense parlar (fred, calor, alegria, ensopegar, portar un objecte pesat…). La resta ha d'endevinar què representem. Després, per parelles, un proposa un gest i l'altre l'ha d'imitar exactament, fixant-se en els petits detalls del moviment.", org:"Aula de psico · Gran grup / Parelles", mat:"Cap material específic"},
+  jl:{mat:"—", extra:"A la nova rotllana, l'adult explica que ara poden jugar lliurement amb el material. La mestra apaga el llum, senyal per tornar a la rotllana i donar pas a la darrera part."},
+  retro:{closing:"Per acabar, fem un dibuix de l'emoció que més ens ha agradat representar.", org:"Aula de psico · Individual", mat:"Full DIN A3, llapis"}},
+{n:11, title:"St. Josep de Calassanç: naixement de l'Escola Pia", type:"JT", tri:1, date:"2026-11-24", breath:"Serp que xiula", obj:"4.1, 4.2, 2.5", game:"tria el joc reglat vigent: «El mocador».", realitzada:false,
+  jd:{desc:"Partint de la història de St. Josep de Calassanç, fem la dramatització. Es van escollint els personatges que la representaran i, entre tots, construïm una escola i representem la creació de l'Escola Pia.", org:"Aula de psico · Gran grup", mat:"Blocs de construcció, disfresses i mocadors, piques"},
+  jl:{mat:"Mateix material", extra:"A la nova rotllana, l'adult explica que ara poden jugar lliurement amb el material. La mestra apaga el llum, senyal per tornar a la rotllana i donar pas a la darrera part."},
+  retro:{closing:"Per acabar, fem cloenda amb música.", org:"Aula de psico · Gran grup", mat:"Altaveu i música"}},
+{n:12, title:"Jocs de punteria: cercles i cons", type:"HMB", tri:1, date:"2026-12-01", breath:"Abella", obj:"1.1, 1.3", game:"tria el joc reglat vigent: «Conillets al seu cau».", realitzada:false,
+  jd:{desc:"Presentem tres estacions de punteria i precisió: llançar sacs de sorra dins de cercles a diferent distància, fer caure cons amb una pilota, i encistellar mocadors fets bola dins d'una caixa. Rotem per petits grups cada estació.", org:"Aula de psico · Equip cooperatiu", mat:"Sacs de sorra, cercles, cons, pilotes, caixa"},
+  jl:{mat:"Mateix material", extra:"A la nova rotllana, l'adult explica que ara poden jugar lliurement amb el material. La mestra apaga el llum, senyal per tornar a la rotllana i donar pas a la darrera part."},
+  retro:{closing:"Per acabar, fem cloenda amb plastilina.", org:"Aula de psico · Individual", mat:"Plastilina"}},
+{n:13, title:"Respirem junts: primers passos de ioga", type:"CC", tri:1, date:"2026-12-08", breath:"Postura de l'arbre", obj:"6.2", game:"tria el joc reglat vigent: «El rescat de les estàtues».", realitzada:false,
+  jd:{desc:"Introducció senzilla al ioga infantil: aprenem a notar com puja i baixa la panxa quan respirem, estirats a terra amb un peluix sobre la panxa que 'puja i baixa com un vaixell'. Després provem, asseguts, dues postures molt senzilles (l'arbre i la papallona), mantenint-les uns segons cada una.", org:"Aula de psico · Gran grup", mat:"Estoretes, peluixos, música suau"},
+  jl:{mat:"Estoretes", extra:"A la nova rotllana, l'adult explica que ara poden jugar lliurement amb el material. El joc lliure d'aquesta sessió es manté tranquil, amb el mateix material a disposició. La mestra apaga el llum, senyal per tornar a la rotllana i donar pas a la darrera part."},
+  retro:{closing:"En ser una sessió de ioga, la relaxació final s'allarga una mica més de l'habitual.", org:"Aula de psico · Gran grup", mat:"Música suau"}},
+{n:14, title:"El conte de Nadal, representem-lo", type:"JT", tri:1, date:"2026-12-15", breath:"Gat-vaca", obj:"4.2, 4.4, 2.5", game:"tria el joc reglat vigent: «El mocador».", realitzada:false,
+  jd:{desc:"Es narra un conte nadalenc senzill (per exemple, el viatge d'un personatge que porta llum a un poble fosc) i s'hi van incorporant gestos i moviments col·lectius que la mestra proposa i els infants repeteixen i amplien.", org:"Aula de psico · Gran grup", mat:"Altaveu i música, mocadors, disfresses"},
+  jl:{mat:"Mateix material", extra:"A la nova rotllana, l'adult explica que ara poden jugar lliurement amb el material. La mestra apaga el llum, senyal per tornar a la rotllana i donar pas a la darrera part."},
+  retro:{closing:"Per acabar, cantem i ballem una cançó nadalenca en rotllana.", org:"Aula de psico · Gran grup", mat:"Altaveu i música"}},
+{n:15, title:"Circuit d'hivern", type:"HMB", tri:2, date:"2027-01-12", breath:"Papallona", obj:"1.1, 1.2, 1.3", game:"tria el joc reglat vigent: «Conillets al seu cau».", realitzada:false,
+  jd:{desc:"Circuit cooperatiu per grups: cada equip crea i explica una estació ambientada en l'hivern (mantes = neu per arrossegar-s'hi, cercles = glaçons per saltar-hi d'un a l'altre, blocs d'escuma = pedres per esquivar), treballant-hi una HMB diferent. Rotació completa pel circuit.", org:"Aula de psico · Grups cooperatius", mat:"Mantes, cercles, blocs d'escuma"},
+  jl:{mat:"Mateix material", extra:"A la nova rotllana, l'adult explica que ara poden jugar lliurement amb el material. La mestra apaga el llum, senyal per tornar a la rotllana i donar pas a la darrera part."},
+  retro:{closing:"Per acabar, fem cloenda amb plastilina.", org:"Aula de psico · Individual", mat:"Plastilina"}},
+{n:16, title:"Miralls: em moc com tu", type:"CC", tri:2, date:"2027-01-19", breath:"Gos cap avall", obj:"2.1, 4.2", game:"tria el joc reglat vigent: «El rescat de les estàtues».", realitzada:false,
+  jd:{desc:"En parelles, juguem a imitar-nos, a fer de miralls: cadascú representa un moviment i la parella l'ha de copiar. Un cop fets uns quants moviments i intercanviat el rol, passem a disfressar-nos amb mocadors perquè la parella també hagi de copiar la disfressa.", org:"Aula de psico · Parelles", mat:"Mocadors"},
+  jl:{mat:"Mocadors", extra:"A la nova rotllana, l'adult explica que ara poden jugar lliurement amb el material. La mestra apaga el llum, senyal per tornar a la rotllana i donar pas a la darrera part."},
+  retro:{closing:"Per acabar, fem cloenda amb música i un massatge grupal.", org:"Aula de psico · Gran grup", mat:"Altaveu i música"}},
+{n:17, title:"Titelles de mocador: la nit de Reis", type:"JT", tri:2, date:"2027-01-26", breath:"Globus que s'infla", obj:"4.2, 4.3", game:"tria el joc reglat vigent: «El mocador».", realitzada:false,
+  jd:{desc:"Es dona un mocador a cada infant perquè creï la seva pròpia titella, fent-hi un nus i movent-la. Fem moviment amb la titella (saludar els amics, posar-la a dormir…) i, després, l'utilitzem per representar breument l'arribada dels Reis. Repetim el procés creant una segona titella amb les sabates i la dessuadora.", org:"Aula de psico · Individual", mat:"Mocador, sabates, dessuadora"},
+  jl:{mat:"Mateix material", extra:"A la nova rotllana, l'adult explica que ara poden jugar lliurement amb el material. La mestra apaga el llum, senyal per tornar a la rotllana i donar pas a la darrera part."},
+  retro:{closing:"Per acabar, fem cloenda amb un massatge en parelles.", org:"Aula de psico · Parelles", mat:"Altaveu i música, pilotes"}},
+{n:18, title:"Carnaval: preparem les disfresses", type:"JT", tri:2, date:"2027-02-02", breath:"Elefant", obj:"4.2, 2.5", game:"tria el joc reglat vigent: «Conillets al seu cau».", realitzada:false,
+  jd:{desc:"Amb material reciclat i teles, cada infant es crea un petit complement de disfressa (una màscara, una capa, un barret) i, un cop fet, l'estrenem movent-nos per l'espai com el personatge que hem imaginat: com camina, com es mou, quin so fa.", org:"Aula de psico · Gran grup", mat:"Material reciclat, teles, cinta adhesiva, retoladors"},
+  jl:{mat:"Mateix material", extra:"A la nova rotllana, l'adult explica que ara poden jugar lliurement amb el material. La mestra apaga el llum, senyal per tornar a la rotllana i donar pas a la darrera part."},
+  retro:{closing:"Per acabar, fem una petita desfilada amb música.", org:"Aula de psico · Gran grup", mat:"Altaveu i música"}},
+{n:19, title:"Carnaval: la Vella Quaresma", type:"JT", tri:2, date:"2027-02-16", breath:"Serp que xiula", obj:"4.2, 2.5", game:"tria el joc reglat vigent: «El rescat de les estàtues».", realitzada:false,
+  jd:{desc:"S'explica el conte de carnaval. Seguidament, s'escull el carnestoltes, que va narrant la història i escollint els personatges. A partir d'aquí es crea una festa on també apareix la Vella Quaresma, i cadascú té un rol definit pel carnestoltes.", org:"Aula de psico · Gran grup", mat:"Conte de carnaval, disfresses i mocadors"},
+  jl:{mat:"Mateix material", extra:"A la nova rotllana, l'adult explica que ara poden jugar lliurement amb el material. La mestra apaga el llum, senyal per tornar a la rotllana i donar pas a la darrera part."},
+  retro:{closing:"Per acabar, fem cloenda dibuixant allò que més ens ha agradat de la sessió.", org:"Aula de psico · Individual", mat:"Full DIN A3, llapis"}},
+{n:20, title:"Jocs tradicionals: bitlles i xarranca", type:"HMB", tri:2, date:"2027-02-23", breath:"Abella", obj:"1.1, 1.3, 6.1", game:"tria el joc reglat vigent: «El mocador».", realitzada:false,
+  jd:{desc:"Presentem dos jocs tradicionals amb regles explícites i progressives: les bitlles (llançar per fer-les caure, respectant els torns per equip) i la xarranca (seqüència de salts a peu coix i a dos peus). Practiquem primer tots junts i després deixem que ho facin en petits grups seguint les normes de manera autònoma.", org:"Aula de psico · Equip cooperatiu", mat:"Bitlles, guix"},
+  jl:{mat:"Bitlles, guix", extra:"A la nova rotllana, l'adult explica que ara poden jugar lliurement amb el material. La mestra apaga el llum, senyal per tornar a la rotllana i donar pas a la darrera part."},
+  retro:{closing:"Per acabar, fem cloenda amb un massatge (l'ou).", org:"Aula de psico · Gran grup", mat:"—"}},
+{n:21, title:"Respirem com animals", type:"CC", tri:2, date:"2027-03-02", breath:"Postura de l'arbre", obj:"6.2, 2.1", game:"tria el joc reglat vigent: «Conillets al seu cau».", realitzada:false,
+  jd:{desc:"Sessió centrada en el ioga infantil: postures d'animals (gat, gos, papallona, serp) associades cadascuna a un tipus de respiració concreta (inspiració-expiració llarga i pausada), combinades amb jocs de respiració (bufar plomes imaginàries, inflar un globus imaginari, «respiració de l'abella»).", org:"Aula de psico · Gran grup", mat:"Estoretes, música suau"},
+  jl:{mat:"Estoretes", extra:"A la nova rotllana, l'adult explica que ara poden jugar lliurement amb el material. El joc lliure d'aquesta sessió es manté tranquil, amb el mateix material de ioga a disposició. La mestra apaga el llum, senyal per tornar a la rotllana i donar pas a la darrera part."},
+  retro:{closing:"En ser una sessió de ioga, la relaxació final s'allarga una mica més de l'habitual, amb una relaxació guiada tombats a terra.", org:"Aula de psico · Gran grup", mat:"Música suau"}},
+{n:22, title:"Jocs cooperatius: l'illa", type:"HMB", tri:2, date:"2027-03-09", breath:"Gat-vaca", obj:"1.3, 2.5, 4.1", game:"tria el joc reglat vigent: «El rescat de les estàtues».", realitzada:false,
+  jd:{desc:"Presentem dos jocs en equip cooperatiu: «Les quatre cantonades» (canviar de cantonada quan la mestra ho indiqui, sense deixar-se anar de les mans) i «L'illa» (a partir d'una petita història, situar-se dins d'una illa pintada amb guix que es va reduint de mida, procurant que hi càpiguen tots).", org:"Aula de psico · Equip cooperatiu / Gran grup", mat:"Guix"},
+  jl:{mat:"Guix", extra:"A la nova rotllana, l'adult explica que ara poden jugar lliurement amb el material. La mestra apaga el llum, senyal per tornar a la rotllana i donar pas a la darrera part."},
+  retro:{closing:"Per acabar, fem cloenda dibuixant allò que més ens ha agradat de la sessió.", org:"Aula de psico · Individual", mat:"Full DIN A3, llapis"}},
+{n:23, title:"El cos que s'equilibra", type:"CC", tri:2, date:"2027-03-16", breath:"Papallona", obj:"6.2, 1.1", game:"tria el joc reglat vigent: «El mocador».", realitzada:false,
+  jd:{desc:"Sessió de ioga centrada en l'equilibri: postura de l'arbre, del flamenc i del guerrer, combinades amb petits reptes d'equilibri estàtic (aguantar la postura uns segons) i una respiració conscient entre postura i postura.", org:"Aula de psico · Gran grup", mat:"Estoretes, música suau"},
+  jl:{mat:"Estoretes", extra:"A la nova rotllana, l'adult explica que ara poden jugar lliurement amb el material. La mestra apaga el llum, senyal per tornar a la rotllana i donar pas a la darrera part."},
+  retro:{closing:"Relaxació final llarga, tombats a terra, repassant en veu baixa les postures fetes durant la sessió.", org:"Aula de psico · Gran grup", mat:"Música suau"}},
+{n:24, title:"Circuit cooperatiu de primavera", type:"HMB", tri:3, date:"2027-03-30", breath:"Gos cap avall", obj:"1.1, 1.2, 1.3", game:"tria el joc reglat vigent: «Conillets al seu cau».", realitzada:false,
+  jd:{desc:"En equip cooperatiu, cada grup pensa un tram de circuit tenint present que cadascú hi ha de treballar una habilitat motriu bàsica. Primer s'escull en equip quina HMB es vol treballar, pactant amb la resta de grups perquè no es repeteixin.", org:"Aula de psico · Equip cooperatiu", mat:"Depenent de l'equip"},
+  jl:{mat:"Mateix material", extra:"A la nova rotllana, l'adult explica que ara poden jugar lliurement amb el material. La mestra apaga el llum, senyal per tornar a la rotllana i donar pas a la darrera part."},
+  retro:{closing:"Per acabar, fem un dibuix de la sessió.", org:"Aula de psico · Gran grup", mat:"Full DIN A3, llapis"}},
+{n:25, title:"La meva titella de volum: cossos geomètrics", type:"CC", tri:3, date:"2027-04-06", breath:"Globus que s'infla", obj:"5.3, 4.2", game:"tria el joc reglat vigent: «El rescat de les estàtues».", realitzada:false,
+  jd:{desc:"Entre tots cantem «En Joan Petit quan balla» per fer memòria de les parts del cos. Recordem els moments en què hem creat titelles i preguntem què es pot aconseguir fer amb el paper d'embalar. Els diem que les titelles tenen volum i preguntem quins cossos coneixen (esfera, prisma, cilindre…). Es dona el material a cada equip perquè creï la seva titella i, finalment, la presenten a la rotllana explicant com s'han posat d'acord, quins cossos han usat i quin nom li han decidit posar.", org:"Aula de psico · Equip cooperatiu", mat:"Paper d'embalar, cinta adhesiva"},
+  jl:{mat:"Mateix material", extra:"A la nova rotllana, l'adult explica que ara poden jugar lliurement amb el material. La mestra apaga el llum, senyal per tornar a la rotllana i donar pas a la darrera part."},
+  retro:{closing:"Compartim verbalment com ha anat el procés de creació en equip.", org:"Aula de psico · Gran grup", mat:"—"}},
+{n:26, title:"L'espantaocells i el concurs de ioga amb en Roc", type:"JT", tri:3, date:"2027-04-13", breath:"Elefant", obj:"4.2, 2.5", game:"tria el joc reglat vigent: «El mocador».", realitzada:false,
+  jd:{desc:"Activitat vinculada a l'itinerari d'aprenentatge de l'espantaocells: comencem amb el conte, que la mestra narra mentre cadascú va representant els moviments de ioga que s'hi esmenten. Després ens disfressem d'espantaocells amb material reciclat i disfresses, i ens presentem al concurs de ioga amb en Roc.", org:"Aula de psico · Gran grup", mat:"Materials reciclats i disfresses"},
+  jl:{mat:"Mateix material", extra:"A la nova rotllana, l'adult explica que ara poden jugar lliurement amb el material. La mestra apaga el llum, senyal per tornar a la rotllana i donar pas a la darrera part."},
+  retro:{closing:"Per acabar, fem cloenda amb plastilina representant allò que més ens ha agradat.", org:"Aula de psico · Individual", mat:"Plastilina"}},
+{n:27, title:"La llegenda de Sant Jordi", type:"JT", tri:3, date:"2027-04-20", breath:"Serp que xiula", obj:"4.2, 2.5, 4.4", game:"tria el joc reglat vigent: «Conillets al seu cau».", realitzada:false,
+  jd:{desc:"Es representa la llegenda de Sant Jordi. Es divideix el grup en dos subgrups i cadascú escull quin personatge vol representar; la meitat de la classe representa la llegenda i l'altra fa de públic. Entre tots es crea el decorat del castell, la granja i la cova, i la mestra narra la història mentre els infants la van dramatitzant.", org:"Aula de psico · Petit grup", mat:"Disfresses, blocs d'escuma, blocs de construcció"},
+  jl:{mat:"Mateix material", extra:"A la nova rotllana, l'adult explica que ara poden jugar lliurement amb el material. La mestra apaga el llum, senyal per tornar a la rotllana i donar pas a la darrera part."},
+  retro:{closing:"Per acabar, fem cloenda amb plastilina plasmant allò que més ens ha agradat.", org:"Aula de psico · Gran grup", mat:"Plastilina"}},
+{n:28, title:"Jocs tradicionals: bales, xapes i corda", type:"HMB", tri:3, date:"2027-04-27", breath:"Abella", obj:"1.1, 6.1", game:"tria el joc reglat vigent: «El rescat de les estàtues».", realitzada:false,
+  jd:{desc:"Presentem tres jocs tradicionals de precisió i motricitat fina-gruixuda combinada: les bales (llançar i encertar), les xapes (fer-les lliscar amb el dit seguint un recorregut) i la corda (saltar-hi seguint un ritme). Expliquem les normes de cada joc i les practiquem progressivament.", org:"Aula de psico · Equip cooperatiu", mat:"Bales, xapes, corda"},
+  jl:{mat:"Mateix material", extra:"A la nova rotllana, l'adult explica que ara poden jugar lliurement amb el material. La mestra apaga el llum, senyal per tornar a la rotllana i donar pas a la darrera part."},
+  retro:{closing:"Per acabar, fem cloenda amb un massatge (l'ou).", org:"Aula de psico · Gran grup", mat:"—"}},
+{n:29, title:"Lateralitat i orientació: dreta-esquerra", type:"CC", tri:3, date:"2027-05-04", breath:"Postura de l'arbre", obj:"5.2, 1.5", game:"tria el joc reglat vigent: «El mocador».", realitzada:false,
+  jd:{desc:"Juguem a «Simon diu» amb consignes de lateralitat (aixeca la mà dreta, toca't el peu esquerre amb la mà dreta…). Després, muntem un petit circuit d'orientació al terra amb fletxes de colors (un color per a la dreta, un altre per a l'esquerra) que cal seguir a partir d'instruccions verbals de la mestra.", org:"Aula de psico · Gran grup / Individual", mat:"Fletxes de colors, guix"},
+  jl:{mat:"Fletxes de colors, guix", extra:"A la nova rotllana, l'adult explica que ara poden jugar lliurement amb el material. La mestra apaga el llum, senyal per tornar a la rotllana i donar pas a la darrera part."},
+  retro:{closing:"Per acabar, fem un dibuix indicant amb fletxes el camí que més ens ha agradat del circuit.", org:"Aula de psico · Individual", mat:"Full DIN A3, llapis"}},
+{n:30, title:"Joc dramàtic lliure: el nostre conte", type:"JT", tri:3, date:"2027-05-18", breath:"Gat-vaca", obj:"4.2, 4.3, 2.5", game:"tria el joc reglat vigent: «Conillets al seu cau».", realitzada:false,
+  jd:{desc:"En petits grups, els infants inventen col·lectivament un conte breu (amb una estructura de suport: personatge, problema, solució) i el representen amb disfresses i material del racó, mentre la resta fa de públic per torns.", org:"Aula de psico · Petits grups", mat:"Disfresses, mocadors"},
+  jl:{mat:"Mateix material", extra:"A la nova rotllana, l'adult explica que ara poden jugar lliurement amb el material. La mestra apaga el llum, senyal per tornar a la rotllana i donar pas a la darrera part."},
+  retro:{closing:"Per acabar, fem cloenda amb música.", org:"Aula de psico · Gran grup", mat:"Altaveu i música"}},
+{n:31, title:"Jocs reglats de pati: el nostre repertori", type:"HMB", tri:3, date:"2027-05-25", breath:"Papallona", obj:"6.1, 6.3", game:"tria el joc reglat vigent: «El rescat de les estàtues».", realitzada:false,
+  jd:{desc:"Repassem i practiquem junts els tres jocs reglats treballats durant el curs (el mocador, conillets al seu cau, el rescat de les estàtues), amb èmfasi a explicar bé les normes perquè els infants els puguin reproduir de manera autònoma al pati.", org:"Aula de psico / Pati · Gran grup", mat:"Cèrcols (segons el joc)"},
+  jl:{mat:"—", extra:"A la nova rotllana, l'adult explica que ara poden jugar lliurement amb el material. El joc lliure d'aquesta sessió consisteix a seguir jugant als mateixos jocs reglats, ja de manera autònoma. La mestra apaga el llum, senyal per tornar a la rotllana i donar pas a la darrera part."},
+  retro:{closing:"Compartim quins d'aquests jocs voldrien continuar jugant al pati.", org:"Aula de psico · Gran grup", mat:"—"}},
+{n:32, title:"Respiració i relaxació final", type:"CC", tri:3, date:"2027-06-01", breath:"Gos cap avall", obj:"6.2", game:"tria el joc reglat vigent: «El mocador».", realitzada:false,
+  jd:{desc:"Sessió de cloenda de ioga i relaxació: repassem les postures i respiracions treballades durant el curs i, en parelles, creem una petita seqüència pròpia combinant-ne dues o tres.", org:"Aula de psico · Parelles", mat:"Estoretes, música suau"},
+  jl:{mat:"Estoretes", extra:"A la nova rotllana, l'adult explica que ara poden jugar lliurement amb el material. La mestra apaga el llum, senyal per tornar a la rotllana i donar pas a la darrera part."},
+  retro:{closing:"Relaxació final llarga amb música i massatge per parelles.", org:"Aula de psico · Parelles", mat:"Altaveu i música"}},
+{n:33, title:"Circuit d'estiu: repassem les HMB", type:"HMB", tri:3, date:"2027-06-08", breath:"Globus que s'infla", obj:"1.1, 1.3, 1.4", game:"tria el joc reglat vigent: «Conillets al seu cau».", realitzada:false,
+  jd:{desc:"Últim circuit del curs: hi combinem estacions de totes les habilitats motrius treballades durant l'any (salt, equilibri, gateig, desplaçament, llançament), perquè cada infant pugui veure per si mateix tot el que ha après.", org:"Aula de psico · Equip cooperatiu", mat:"Material divers de psicomotricitat"},
+  jl:{mat:"Mateix material", extra:"A la nova rotllana, l'adult explica que ara poden jugar lliurement amb el material. La mestra apaga el llum, senyal per tornar a la rotllana i donar pas a la darrera part."},
+  retro:{closing:"Per acabar, fem un dibuix d'allò que més m'agrada de psico.", org:"Aula de psico · Individual", mat:"Full DIN A3, llapis"}},
+{n:34, title:"Festa de cloenda: el musical de curs", type:"JT", tri:3, date:"2027-06-15", breath:"Elefant", obj:"4.1, 4.2, 2.5, 4.4", game:"tria el joc reglat vigent: «El rescat de les estàtues».", realitzada:false,
+  jd:{desc:"Sessió de tancament de curs: recuperem un fragment de cadascuna de les dramatitzacions treballades durant l'any (Santa Tècla, la Castanyera, Sant Jordi, Carnaval…) i muntem un petit «musical» col·lectiu, que es pot compartir amb una altra classe o amb les famílies si s'escau.", org:"Aula de psico · Gran grup", mat:"Disfresses i materials de l'any, altaveu i música"},
+  jl:{mat:"Mateix material", extra:"A la nova rotllana, l'adult explica que ara poden jugar lliurement amb el material. La mestra apaga el llum, senyal per tornar a la rotllana i donar pas a la darrera part."},
+  retro:{closing:"Cloenda de curs amb música i una rotllana final de comiat.", org:"Aula de psico · Gran grup", mat:"Altaveu i música"}},
+];
+
+const FREE_SESSIONS = [
+  {date:"2026-11-03"},
+  {date:"2027-02-09"},
+  {date:"2027-05-11"},
+];
+
+const TYPE_LABEL = {HMB:"Habilitats motrius bàsiques", CC:"Consciència corporal", JT:"Joc teatralitzat", FREE:"Sessió lliure / marge"};
+const BREATH_BANK = {
+  "Globus que s'infla": "Inspirem inflant la panxa com un globus, aguantem un instant i deixem anar l'aire lentament fent «ffff».",
+  "Elefant": "Inspirem aixecant els braços entrellaçats com una trompa i expirem baixant-los lentament.",
+  "Serp que xiula": "Inspirem pel nas i expirem llarg fent «ssss», movent el cos com una serp.",
+  "Abella": "Expirem fent «mmm» amb la boca tancada, notant la vibració.",
+  "Postura de l'arbre": "Dempeus, un peu recolzat a l'altra cama, braços amunt: equilibri i concentració.",
+  "Gat-vaca": "A quatre grapes, arquegem i corbem l'esquena seguint la respiració.",
+  "Papallona": "Asseguts, plantes dels peus juntes, obrim i tanquem les «ales» (cames) amb calma.",
+  "Gos cap avall": "Formem una «muntanya» amb el cos, mans i peus a terra, respirant profund."
+};
+const RETROACCIO_INTRO = "Un cop a la rotllana final, ens tornem a posar les sabates. Preguntem als infants quin ha estat el seu moment preferit i donem espai perquè expliquin les seves sensacions. ";
+const JUGUEM_JUNTS_INTRO = "Arribem a l'aula de psico, ens descalcem amb calma —el moment d'arribar tranquils— i fem rotllana per recordar els 3 acords d'aula i les 4 parts de la sessió. El protagonista del dia ";
+const JUGUEM_JUNTS_OUTRO = " En acabar, la mestra apaga el llum, senyal per tornar a la rotllana i donar pas al nucli de la sessió.";
+
+// Build the master chronological list (content sessions + free/marge sessions), each gets a seq number.
+const MASTER = [
+  ...SESSIONS.map(s => ({kind:'session', date:s.date, tri:s.tri, session:s})),
+  ...FREE_SESSIONS.map(f => ({kind:'free', date:f.date, tri: f.date < "2026-12-20" ? 1 : (f.date < "2027-04-01" ? 2 : 3)}))
+].sort((a,b) => a.date < b.date ? -1 : 1)
+ .map((ev, i) => ({...ev, seq: i+1}));
+
+const STORAGE_KEY = "psico-i5-tracker-state-v2";
+let state = { postpones: [] }; // [{beforeSeq, reason}]
+
+function fmtDate(d){
+  return d.toLocaleDateString('ca-ES', { weekday:'long', day:'numeric', month:'long' });
+}
+function fmtDateShort(d){
+  return d.toLocaleDateString('ca-ES', { day:'numeric', month:'short' });
+}
+function parseISO(s){
+  const [y,m,d] = s.split('-').map(Number);
+  return new Date(y, m-1, d);
+}
+function addDays(d, days){
+  const nd = new Date(d);
+  nd.setDate(nd.getDate() + days);
+  return nd;
+}
+function mondayOf(d){
+  const nd = new Date(d);
+  const day = nd.getDay();
+  const diff = (day === 0 ? -6 : 1 - day);
+  nd.setDate(nd.getDate() + diff);
+  nd.setHours(0,0,0,0);
+  return nd;
+}
+
+function effectiveDate(ev){
+  const base = parseISO(ev.date);
+  const shiftWeeks = state.postpones.filter(p => p.beforeSeq <= ev.seq).length;
+  return addDays(base, shiftWeeks * 7);
+}
+
+async function loadState(){
+  try{
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if(raw){
+      const parsed = JSON.parse(raw);
+      state = { postpones: parsed.postpones || [] };
+    }
+  }catch(e){ /* no saved state yet */ }
+}
+
+async function saveState(){
+  const statusEl = document.getElementById('status');
+  try{
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    if(statusEl){ statusEl.textContent = "Desat ✓"; setTimeout(()=>{ statusEl.textContent = ""; }, 1500); }
+  }catch(e){
+    if(statusEl) statusEl.textContent = "No s'ha pogut desar en aquest navegador";
+  }
+}
+
+function render(){
+  const today = new Date();
+  today.setHours(0,0,0,0);
+  const todayMonday = mondayOf(today);
+
+  let current = null;
+  let upcoming = null;
+  for(const ev of MASTER){
+    const d = effectiveDate(ev);
+    const wMonday = mondayOf(d);
+    if(wMonday.getTime() === todayMonday.getTime()){
+      current = {ev, date:d};
+    }
+    if(d.getTime() >= today.getTime() && !upcoming){
+      upcoming = {ev, date:d};
+    }
+  }
+
+  const nowCard = document.getElementById('nowCard');
+  function renderNow(entry, tagText){
+    const {ev, date} = entry;
+    if(ev.kind === 'free'){
+      nowCard.innerHTML = `
+        <p class="tag">${tagText}</p>
+        <h2>Sessió lliure / marge</h2>
+        <div class="meta">
+          <span class="pill">Trimestre ${ev.tri}</span>
+          <span>${fmtDate(date)}</span>
+          <span>Marge per a imprevistos o festivitats</span>
+        </div>`;
+    } else {
+      const s = ev.session;
+      nowCard.innerHTML = `
+        <p class="tag">${tagText}</p>
+        <h2>Sessió ${s.n} · ${s.title}</h2>
+        <div class="meta">
+          <span class="pill">${TYPE_LABEL[s.type]}</span>
+          <span>${fmtDate(date)}</span>
+          <span>Trimestre ${s.tri}</span>
+        </div>`;
+    }
+  }
+
+  if(current){
+    renderNow(current, 'AQUESTA SETMANA');
+  } else if(upcoming){
+    const diffDays = Math.round((mondayOf(upcoming.date) - todayMonday) / 86400000);
+    nowCard.innerHTML = '';
+    renderNow(upcoming, 'SENSE SESSIÓ AQUESTA SETMANA');
+    nowCard.querySelector('.meta').insertAdjacentHTML('beforeend', `<span>d'aquí ${diffDays === 7 ? '1 setmana' : diffDays + ' dies'}</span>`);
+  } else {
+    nowCard.innerHTML = `
+      <p class="tag">CURS ACABAT</p>
+      <p class="empty-msg">S'ha completat tota la programació del curs.</p>`;
+  }
+
+  // sessions list grouped by trimester
+  const container = document.getElementById('sessions');
+  container.innerHTML = '';
+  for(let tri=1; tri<=3; tri++){
+    const block = document.createElement('div');
+    block.className = 'trimester';
+    const label = tri===1 ? 'Trimestre 1 · setembre–desembre' : tri===2 ? 'Trimestre 2 · gener–març' : 'Trimestre 3 · abril–juny';
+    block.innerHTML = `<p class="trimester-title">${label}</p>`;
+
+    MASTER.filter(ev => ev.tri === tri).forEach(ev => {
+      const d = effectiveDate(ev);
+      const isPast = d.getTime() < todayMonday.getTime();
+      const isCurrent = current && current.ev.seq === ev.seq;
+      const item = document.createElement('div');
+
+      if(ev.kind === 'free'){
+        item.className = 'session-item' + (isPast && !isCurrent ? ' done' : '') + (isCurrent ? ' current' : '');
+        item.innerHTML = `
+          <div class="session-row" style="cursor:default;">
+            <div class="num">·</div>
+            <div class="title-cell">
+              <div class="title">Sessió lliure / marge</div>
+              <span class="type FREE">Marge per a imprevistos</span>
+            </div>
+            <div class="date-cell">${fmtDateShort(d)}</div>
+            <div class="chevron"></div>
+          </div>`;
+        block.appendChild(item);
+        return;
+      }
+
+      const s = ev.session;
+      item.className = 'session-item' + (isPast && !isCurrent ? ' done' : '') + (isCurrent ? ' current' : '');
+
+      item.innerHTML = `
+        <div class="session-row">
+          <div class="num">${s.n}</div>
+          <div class="title-cell">
+            <div class="title">${s.title}${s.realitzada ? ' <span style="font-weight:400;color:var(--ink-soft);font-size:12px;">(feta)</span>' : ''}</div>
+            <span class="type ${s.type}">${TYPE_LABEL[s.type]}</span>
+          </div>
+          <div class="date-cell">${fmtDateShort(d)}</div>
+          <div class="chevron">▶</div>
+        </div>
+        <div class="session-detail">
+          <p class="obj-line">Objectius treballats: ${s.obj}</p>
+
+          <div class="block" data-type="${s.type}">
+            <div class="block-head"><span class="name">1. Juguem junts</span><span class="dur">15 min</span></div>
+            <p>${JUGUEM_JUNTS_INTRO}${s.game}${JUGUEM_JUNTS_OUTRO}</p>
+            <div class="tags"><span><b>Espai:</b> Aula de psico · Gran grup</span><span><b>Material:</b> Cap material específic</span></div>
+          </div>
+
+          <div class="block" data-type="${s.type}">
+            <div class="block-head"><span class="name">2. Presentació + joc dirigit</span><span class="dur">40 min</span></div>
+            <p>${s.jd.desc}</p>
+            <div class="tags"><span><b>Espai:</b> ${s.jd.org}</span><span><b>Material:</b> ${s.jd.mat}</span></div>
+          </div>
+
+          <div class="block" data-type="${s.type}">
+            <div class="block-head"><span class="name">3. Joc lliure</span><span class="dur">20 min</span></div>
+            <p>${s.jl.extra}</p>
+            <div class="tags"><span><b>Espai:</b> Aula de psico · Gran grup</span><span><b>Material:</b> ${s.jl.mat}</span></div>
+          </div>
+
+          <div class="block" data-type="${s.type}">
+            <div class="block-head"><span class="name">4. Retroacció i relaxació</span><span class="dur">15 min</span></div>
+            <p>${RETROACCIO_INTRO}Fem l'exercici de respiració «${s.breath}»: ${BREATH_BANK[s.breath]} ${s.retro.closing}</p>
+            <div class="tags"><span><b>Espai:</b> ${s.retro.org}</span><span><b>Material:</b> ${s.retro.mat}</span></div>
+          </div>
+        </div>`;
+
+      item.querySelector('.session-row').addEventListener('click', ()=>{
+        item.classList.toggle('expanded');
+      });
+      block.appendChild(item);
+    });
+    container.appendChild(block);
+  }
+
+  // postpone selector
+  const sel = document.getElementById('skipSession');
+  sel.innerHTML = MASTER.map(ev => {
+    const label = ev.kind === 'free' ? 'Sessió lliure / marge' : `Sessió ${ev.session.n} · ${ev.session.title}`;
+    const d = effectiveDate(ev);
+    return `<option value="${ev.seq}">Abans de: ${label} (${fmtDateShort(d)})</option>`;
+  }).join('');
+
+  // postpone list
+  const skipList = document.getElementById('skipList');
+  if(state.postpones.length === 0){
+    skipList.innerHTML = `<li style="justify-content:center; color:var(--ink-soft);">Cap incidència afegida de moment</li>`;
+  } else {
+    skipList.innerHTML = state.postpones
+      .slice()
+      .sort((a,b)=>a.beforeSeq-b.beforeSeq)
+      .map((p) => {
+        const ev = MASTER.find(e => e.seq === p.beforeSeq);
+        const label = ev ? (ev.kind === 'free' ? 'Sessió lliure / marge' : `Sessió ${ev.session.n} · ${ev.session.title}`) : '?';
+        return `
+        <li>
+          <span>Abans de: ${label}${p.reason ? ' — ' + p.reason : ''}</span>
+          <button data-seq="${p.beforeSeq}" class="removeSkip">Treure</button>
+        </li>`;
+      }).join('');
+    skipList.querySelectorAll('.removeSkip').forEach(btn=>{
+      btn.addEventListener('click', async (e)=>{
+        const seq = parseInt(e.target.getAttribute('data-seq'));
+        state.postpones = state.postpones.filter(p => p.beforeSeq !== seq);
+        await saveState();
+        render();
+      });
+    });
+  }
+}
+
+document.getElementById('addSkip').addEventListener('click', async ()=>{
+  const seq = parseInt(document.getElementById('skipSession').value);
+  const reason = document.getElementById('skipReason').value.trim();
+  if(state.postpones.some(p => p.beforeSeq === seq)){
+    document.getElementById('status').textContent = "Ja hi ha una incidència des d'aquest punt";
+    return;
+  }
+  state.postpones.push({ beforeSeq: seq, reason });
+  document.getElementById('skipReason').value = '';
+  await saveState();
+  render();
+});
+
+(async function init(){
+  await loadState();
+  render();
+})();
+
+</script>
+</body>
+</html>
